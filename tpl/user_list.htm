@@ -1,0 +1,69 @@
+<!--{include file="head.htm"}-->
+<!--{include file="nav.htm"}-->
+
+<div class="span11">
+		  <div class="page-header">
+            <h3><!--{$title}--></h3>
+          </div>
+
+			<form class="form-search" action="" method="post">
+			{if $smarty.session.roleid == "1" }	
+			<a href="?action=user&do=new" class="btn btn-primary pull-right"><i class="icon-pencil icon-white"></i> 新建</a>
+			{else}
+		     
+		    {/if}		
+			
+			<input type="text" name="keywords" id="keywords" class="input-medium" value="<!--{$smarty.request.keywords}-->"  placeholder="关键字">
+			<!--{$select_userlist}-->
+				<a href="?action=user&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn"><i class="icon-search"></i> 查询</a>
+			<a href="?action=user" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>
+			</form> 
+          <div class="row-fluid" id="usrinfo">
+            <div class="span12">
+
+				<table width="100%" class="table table-bordered table-striped">
+					<thead>
+					  <tr>
+						<th width="32">工号</th>
+						<th width="42">姓名</th>
+						<th width="47">邮箱</th>
+						<th width="90" class="hidden-phone">中文名</th>
+						<th width="130">操作</th>
+					  </tr>
+					</thead>
+					<tbody>
+					 
+			<!--{foreach from=$list item=row}-->
+				<tr>
+					<td><!--{$row.UserName}--></td>
+					<td><!--{$row.Name}--></td>
+					<td><!--{$row.MailAddress}--></td>
+					<td><!--{$row.ChineseName}--></td>
+					<td>
+{if $smarty.session.roleid == "1" }	
+		<a class="btn btn-small" href="?action=user&do=edit&UserName=<!--{$row.UserName}-->"><i class="icon-edit"></i> 编辑</a>
+		<a class="btn btn-small" href="?action=user&do=del&UserName=<!--{$row.UserName}-->" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i> 删除</a>
+{else}
+无权限
+{/if}		
+					</td>
+				</tr>			
+			<!--{/foreach}-->
+ 
+					</tbody>
+				  </table>
+				  
+				<div class="pagination pagination-centered">
+					  <ul class="">
+						<li><span class="btn">共<!--{$total}-->条</span></li>
+						<!--{$page}-->
+					 </ul>
+				</div>
+	  
+            </div><!--/span-->
+          </div><!--/row-->
+		  
+		  
+        </div><!--/span-->
+
+<!--{include file="foot.htm"}-->

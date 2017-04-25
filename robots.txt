@@ -1,0 +1,11 @@
+#
+# robots.txt for EML
+#
+
+User-agent: *
+Allow: /
+Disallow: /uploads
+Disallow: /temp
+Disallow: /lib
+Disallow: /action
+

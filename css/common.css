@@ -1,0 +1,28 @@
+
+body{font-size:14px;}
+
+hr {margin: 10px 0;}
+h3 {line-height:20px}
+.datepicker{z-index:1051}
+.row-fluid .span2 {width:115px;}
+.row-fluid .span10 {width: 85.906%;}
+.well {background-color:#F5F5F5;}
+.table th, .table td {font-size:14px;padding: 8px 8px 6px;}
+.nav-header{font-size:14px;}
+
+
+
+.web-list ul > li  {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    float: left;
+    line-height: 38px;
+    padding: 0 14px;
+    text-decoration: none;
+	list-style:none outside none;
+	font-size:14px;
+}

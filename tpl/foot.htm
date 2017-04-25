@@ -1,0 +1,30 @@
+
+  </div><!--/row-->
+
+  <hr>
+
+  <footer>
+	<p> <!--{$cfg.webtitle}--> Powered by MySQL <!--{$cfg.version}--> </p>
+  </footer>
+
+</div><!--/.fluid-container-->
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="<!--{$cfg.website}-->/js/jquery.js"></script>
+<script src="<!--{$cfg.website}-->/js/bootstrap.min.js"></script>
+<script src="<!--{$cfg.website}-->/js/bootstrap-datepicker.js"></script>
+
+<script>
+$(function(){
+	window.prettyPrint && prettyPrint();
+	$('#datepicker').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+	$('#datepicker2').datepicker({
+		format: 'yyyy-mm-dd'
+	});
+});
+</script>
+</body>
+</html>

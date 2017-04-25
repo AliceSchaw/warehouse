@@ -1,0 +1,102 @@
+<!--{include file="head.htm"}-->
+<!--{include file="nav.htm"}-->
+
+<div class="span10">
+    {if $smarty.session.roleid != "1" }
+
+    <div class="span11">
+        <div class="page-header">
+            <h3><!--{$title}--></h3>
+
+        </div>
+
+        <form class="form-search"  action="" method="post">
+
+
+            <select name="obj" class="input-medium" value="<!--{$smarty.request.obj}-->" >
+                <option value="Category">Category</option>
+                <option value="Status">Status</option>
+                <option value="ProductName" selected="selected">ProductName</option>
+                <option value="XorA">XorA</option>
+            </select>
+            <input type="text" name="keywords" class="input-medium" value="<!--{$smarty.request.keywords}-->"  placeholder="关键字">
+            <!--{$select_userlist}-->
+
+            <button type="submit" class="btn"><i class="icon-search"></i> 查询</button>
+            <a href="" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>
+
+        </form>
+        <div class="row-fluid">
+            <div class="span12">
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th class="hidden-phone">Category</th>
+                        <th class="hidden-phone">Vendor</th>
+                        <th class="hidden-phone">ProductID</th>
+                        <th class="hidden-phone">ProductName</th>
+                        <th class="hidden-phone">Status</th>
+                        <th class="hidden-phone">XorA</th>
+                        <th class="hidden-phone">借出日期</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!--{foreach from=$list item=row}-->
+
+                    <tr>
+                        <td><!--{$row.Type}--></td>
+                        <td class="hidden-phone"><!--{$row.Category}--></td>
+                        <td class="hidden-phone"><!--{$row.Vendor|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.ProductID|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.ProductName|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.Status|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.XorA|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.LentOutDate}--></td>
+
+                    <!--{/foreach}-->
+
+                    </tbody>
+                </table>
+                <div class="pagination pagination-centered">
+                    <ul class="">
+                        <li><span class="btn">共<!--{$total}-->条</span></li>
+                        <!--{$page}-->
+                    </ul>
+                </div>
+
+
+            </div><!--/span-->
+        </div><!--/row-->
+
+    </div><!--/span-->
+    {else}
+
+
+    <h3>设备借还</h3>
+    <div class="page-header">
+        <div class="span12">
+
+            <table>
+                <tbody>
+
+                <tr>
+                    <td rowspan=2 height="400pix" width="400pix"  style=text-align:center; ><a target="_blank" href="?action=address&do=update"><img  height="400pix" width="400pix" src="<!--{$cfg.website}-->/img/device.jpg" alt="设备借还"></a>
+                    </td>
+                    <td rowspan=2 height="450pix" width="410pix"  style=text-align:center; ><a target="_blank" href="?action=address&do=update"><img  height="450pix" width="410pix" src="<!--{$cfg.website}-->/img/Lighthouse.jpg" alt="设备借还"></a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+
+        </div><!--/span-->
+    </div><!--/row-->
+
+
+        {/if}
+</div>
+<!--{include file="foot.htm"}-->

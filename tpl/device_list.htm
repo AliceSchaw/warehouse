@@ -1,0 +1,102 @@
+﻿<!--{include file="head.htm"}-->
+<!--{include file="nav.htm"}-->
+
+<div class="span11">
+
+		  <div class="page-header">
+            <h3><!--{$title}--></h3>
+          </div>
+
+	<form class="form-search" action="" method="post" >
+		{if $smarty.session.roleid == "1" }
+		<a href="?action=address&do=new" class="btn btn-primary pull-right"><i class="icon-pencil icon-white"></i> 新建</a>
+		{else}
+
+		{/if}
+
+		<input type="text" name="keywords" id="keywords" class="input-medium" value="<!--{$smarty.request.keywords}-->"  placeholder="关键字">
+
+		<a href="?action=address&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn"><i class="icon-search"></i> 查询</a>
+		<a href="?action=address" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>
+
+	</form>
+          <div class="row-fluid" id="adrinfo">
+            <div class="span12">
+
+				<table class="table table-bordered table-striped">
+                    <form class="form-search" method="post" action="?action=address&do=select&keywords=<!--{$smarty.request.keywords}-->" name="form">
+					<thead>
+
+					  <tr>
+
+						  <th><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
+							<option value="" selected="selected">Type</option>
+
+							<!--{foreach from=$Objrow item=Typelist}-->
+							<option value="<!--{$Typelist.Type}-->"><!--{$Typelist.Type}--></option>
+
+							<!--{/foreach}-->
+						  </select></th>
+						<th class="hidden-phone">Category</th>
+						<th class="hidden-phone">Vendor</th>
+						  <th class="hidden-phone">ProductID</th>
+						<th class="hidden-phone">ProductName</th>
+						  <th class="hidden-phone">Status</th>
+						  <th class="hidden-phone">Borrower</th>
+						    <th class="hidden-phone">XorA</th>
+
+
+						{if $smarty.session.roleid == "1" }
+						<th width="130pix">操作</th>
+						{else}
+						<th class="hidden-phone">操作</th>
+					    {/if}	
+						</tr>	
+					</thead></form>
+					<tbody>
+
+				<!--{foreach from=$row item=list}-->
+				<tr>
+					<td><!--{$list.Type}--></td>
+					<td class="hidden-phone"><!--{$list.Category}--></td>
+					<td class="hidden-phone"><!--{$list.Vendor|default:无}--></td>
+					<td class="hidden-phone"><!--{$list.ProductID|default:无}--></td>
+					<td class="hidden-phone"><!--{$list.ProductName|default:无}--></td>
+					<td class="hidden-phone"><!--{$list.Status|default:无}--></td>
+					<td class="hidden-phone"><!--{$list.UserName|default:}--></td>
+					<td class="hidden-phone"><!--{$list.XorA|default:}--></td>
+
+
+
+
+
+					{if $smarty.session.roleid == "1" }
+					<td>
+					<a class="btn btn-small" href="?action=address&do=edit&ProductID=<!--{$list.ProductID}-->">
+						<i class="icon-edit"></i>编辑</a>
+					<a class="btn btn-small" href="?action=address&do=del&ProductID=<!--{$list.ProductID}-->" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>
+					删除</a>
+						</td>{else}<td class="hidden-phone">无权限</td>{/if}
+				</tr>
+				<!--{/foreach}-->
+ 
+					</tbody>
+				  </table>
+				  
+				<div class="pagination pagination-centered">
+					  <ul class="">
+
+						<li><span class="btn">共<!--{$total}-->条 </span></li>
+
+						  <!--{$page}-->
+
+					  </ul>
+				</div>
+
+            </div><!--/span-->
+          </div><!--/row-->
+		  
+		  
+        </div><!--/span-->
+
+<!--{include file="foot.htm"}-->
