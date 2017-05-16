@@ -76,27 +76,55 @@
 
 
     <h3>设备借还</h3>
-    <div class="page-header">
-        <div class="span12">
+    <div class="span11">
 
-            <table>
-                <tbody>
+        <div align="center">
+        <form class="form-search" action="?action=back&do=borrow" method="post" >
+            <input type="text" name="IndexID" width="200" value="<!--{$smarty.session.inputid}-->"  placeholder="请输入工号">
+            <button type="submit" class="btn"><i class="icon-search"></i>提交</button>
+        </form></div>
+        <div class="row-fluid">
+            <div class="span12">
 
-                <tr>
-                    <td rowspan=2 height="400pix" width="400pix"  style=text-align:center; ><a target="_blank" href="?action=address&do=update"><img  height="400pix" width="400pix" src="<!--{$cfg.website}-->/img/device.jpg" alt="设备借还"></a>
-                    </td>
-                    <td rowspan=2 height="450pix" width="410pix"  style=text-align:center; ><a target="_blank" href="?action=address&do=update"><img  height="450pix" width="410pix" src="<!--{$cfg.website}-->/img/Lighthouse.jpg" alt="设备借还"></a>
-                    </td>
-                </tr>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
 
-                </tbody>
-            </table>
+                        <th class="hidden-phone">ProductName</th>
+                        <th class="hidden-phone">ProductID</th>
+                        <th class="hidden-phone">Status</th>
+                        <th class="hidden-phone">操作</th>
+
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    {if $smarty.session.inputid != "" }
+                    <!--{foreach from=$list item=row}-->
+                    <tr>
+                        <td class="hidden-phone"><!--{$row.ProductName|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.ProductID|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.Status|default:无}--></td>
+                        <td ><form method="post" action="?action=back&do=return" >
+                            <button class="btn btn-success" type="submit" style="">归还</button>
+                            <input type="text" name="BKid" value="<!--{$row.ProductID}-->" style="display:none;"/></form>
+                        </td>
 
 
-        </div><!--/span-->
-    </div><!--/row-->
+
+                    </tr>
+                    <!--{/foreach}-->
+                    {/if}
+                    </tbody>
+
+                </table>
+
+            </div><!--/span-->
+        </div><!--/row-->
 
 
-        {/if}
+    </div><!--/span-->
+    {/if}
+
 </div>
 <!--{include file="foot.htm"}-->
