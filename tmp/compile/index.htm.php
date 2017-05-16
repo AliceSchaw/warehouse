@@ -78,27 +78,58 @@
 
 
     <h3>设备借还</h3>
-    <div class="page-header">
-        <div class="span12">
+    <div class="span11">
 
-            <table>
-                <tbody>
+        <div align="center">
+        <form class="form-search" action="?action=borrow&do=borrow" method="post" >
+            <input type="text" name="IndexID" width="200" value="<?php echo $_POST['IndexID']; ?>"  placeholder="请输入工号/设备ID">
+            <button type="submit" class="btn"><i class="icon-search"></i>提交</button>
+        </form></div>
+        <div class="row-fluid">
+            <div class="span12">
 
-                <tr>
-                    <td rowspan=2 height="400pix" width="400pix"  style=text-align:center; ><a target="_blank" href="?action=address&do=update"><img  height="400pix" width="400pix" src="<?php echo $this->_var['cfg']['website']; ?>/img/device.jpg" alt="设备借还"></a>
-                    </td>
-                    <td rowspan=2 height="450pix" width="410pix"  style=text-align:center; ><a target="_blank" href="?action=address&do=update"><img  height="450pix" width="410pix" src="<?php echo $this->_var['cfg']['website']; ?>/img/Lighthouse.jpg" alt="设备借还"></a>
-                    </td>
-                </tr>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                     <?php if ($_POST['IndexID'] != ""): ?>
+                    <tr>
 
-                </tbody>
-            </table>
+                        <th class="hidden-phone">ProductName</th>
+                        <th class="hidden-phone">ProductID</th>
+                        <th class="hidden-phone">Status</th>
+                        <th class="hidden-phone">操作</th>
+
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                   
+                    <?php $_from = $this->_var['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'list_0_11882600_1494904537');if (count($_from)):
+    foreach ($_from AS $this->_var['list_0_11882600_1494904537']):
+?>
+                    <tr>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_11882600_1494904537']['ProductName']) ? '无' : $this->_var['list_0_11882600_1494904537']['ProductName']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_11882600_1494904537']['ProductID']) ? '无' : $this->_var['list_0_11882600_1494904537']['ProductID']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_11882600_1494904537']['Status']) ? '无' : $this->_var['list_0_11882600_1494904537']['Status']; ?></td>
+                        <td ><form method="post" action="?action=borrow&do=return" >
+                            <button class="btn btn-success" type="submit" style="">归还</button>
+                            <input type="text" name="BKid" value="<?php echo $this->_var['list_0_11882600_1494904537']['ProductID']; ?>" style="display:none;"/></form>
+                        </td>
 
 
+
+                    </tr>
+                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+                    <?php endif; ?>
+                    </tbody>
+
+                </table>
+
+            </div>
         </div>
+
+
     </div>
+    <?php endif; ?>
 
-
-        <?php endif; ?>
 </div>
 <?php echo $this->fetch('foot.htm'); ?>
