@@ -1,7 +1,7 @@
 <?php
 //====================================================
 //		FileName: action.device.php
-//		Summary:  通讯录信息
+//		Summary:  设备信息
 //====================================================
 header("Content-type: text/html; charset=utf-8");
 

@@ -55,7 +55,9 @@ switch ($action){
 	case "export":
 	  include('action/action.export.php');     //导出
 	  break;
-	  
+    case "borrow":
+        include('action/action.back.php');     //借还
+        break;
 	case "user":
 	  include('action/action.user.php');      //用户
 	  break;
