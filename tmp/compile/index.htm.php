@@ -76,44 +76,50 @@
     </div>
     <?php else: ?>
 
+        <div class="page-header">
+            <h3>设备借还</h3>
 
-    <h3>设备借还</h3>
+        </div>
     <div class="span11">
 
-        <div align="center">
+
+        <div class="row-fluid">
+
+            <div class="span12">
+            <div align="center">
         <form class="form-search" action="?action=borrow&do=borrow" method="post" >
-            <input type="text" name="IndexID" width="200" value="<?php echo $_POST['IndexID']; ?>"  placeholder="请输入工号/设备ID">
+            <input type="text" name="IndexID" width="200" value=""  placeholder="请输入工号/设备ID" autofocus>
             <button type="submit" class="btn"><i class="icon-search"></i>提交</button>
         </form></div>
-        <div class="row-fluid">
-            <div class="span12">
-
+               <?php if ($_SESSION['inputid'] != "" && $this->_var['row'] != ""): ?>
                 <table class="table table-bordered table-striped">
                     <thead>
-                     <?php if ($_POST['IndexID'] != ""): ?>
+ 
                     <tr>
 
                         <th class="hidden-phone">ProductName</th>
                         <th class="hidden-phone">ProductID</th>
                         <th class="hidden-phone">Status</th>
-                        <th class="hidden-phone">操作</th>
+                        <th class="hidden-phone">UserName</th>
+                        <th class="hidden-phone">借出日期</th>
 
                     </tr>
 
                     </thead>
                     <tbody>
                    
-                    <?php $_from = $this->_var['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'list_0_11882600_1494904537');if (count($_from)):
-    foreach ($_from AS $this->_var['list_0_11882600_1494904537']):
+                    <?php $_from = $this->_var['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'list_0_24590500_1494926278');if (count($_from)):
+    foreach ($_from AS $this->_var['list_0_24590500_1494926278']):
 ?>
                     <tr>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_11882600_1494904537']['ProductName']) ? '无' : $this->_var['list_0_11882600_1494904537']['ProductName']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_11882600_1494904537']['ProductID']) ? '无' : $this->_var['list_0_11882600_1494904537']['ProductID']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_11882600_1494904537']['Status']) ? '无' : $this->_var['list_0_11882600_1494904537']['Status']; ?></td>
-                        <td ><form method="post" action="?action=borrow&do=return" >
-                            <button class="btn btn-success" type="submit" style="">归还</button>
-                            <input type="text" name="BKid" value="<?php echo $this->_var['list_0_11882600_1494904537']['ProductID']; ?>" style="display:none;"/></form>
-                        </td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_24590500_1494926278']['ProductName']) ? '无' : $this->_var['list_0_24590500_1494926278']['ProductName']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_24590500_1494926278']['ProductID']) ? '无' : $this->_var['list_0_24590500_1494926278']['ProductID']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_24590500_1494926278']['Status']) ? '无' : $this->_var['list_0_24590500_1494926278']['Status']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_24590500_1494926278']['UserName']) ? '无' : $this->_var['list_0_24590500_1494926278']['UserName']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_24590500_1494926278']['LentOutDate']) ? '无' : $this->_var['list_0_24590500_1494926278']['LentOutDate']; ?></td>
+                        <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
+                        <i class="icon-edit"></i>归还</a>
+                        </td>-->
 
 
 

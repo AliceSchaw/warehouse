@@ -161,8 +161,7 @@ if($do=="updata"){
 	`ProductID` = '$_POST[ProductID]',
 	`ProductName` = '$_POST[ProductName]',
 	`XorA` = '$_POST[XorA]',
-	`Status`='$_POST[Status]',
-	`LentoutDate` = '$updated_at' WHERE `ProductID` ='$_POST[ProductID]' LIMIT 1";
+	`Status`='$_POST[Status]' WHERE `ProductID` ='$_POST[ProductID]' LIMIT 1";
 
     if($db->query($sql)){echo success($msg,"?action=address");}else{echo error($msg);}
     exit;

@@ -74,27 +74,32 @@
     </div><!--/span-->
     {else}
 
+        <div class="page-header">
+            <h3>设备借还</h3>
 
-    <h3>设备借还</h3>
+        </div>
     <div class="span11">
 
-        <div align="center">
+
+        <div class="row-fluid">
+
+            <div class="span12">
+            <div align="center">
         <form class="form-search" action="?action=borrow&do=borrow" method="post" >
-            <input type="text" name="IndexID" width="200" value="<!--{$smarty.post.IndexID}-->"  placeholder="请输入工号/设备ID">
+            <input type="text" name="IndexID" width="200" value=""  placeholder="请输入工号/设备ID" autofocus>
             <button type="submit" class="btn"><i class="icon-search"></i>提交</button>
         </form></div>
-        <div class="row-fluid">
-            <div class="span12">
-
+               <!--{if $smarty.session.inputid != "" && $row!=""}-->
                 <table class="table table-bordered table-striped">
                     <thead>
-                     {if $smarty.post.IndexID != "" }
+ 
                     <tr>
 
                         <th class="hidden-phone">ProductName</th>
                         <th class="hidden-phone">ProductID</th>
                         <th class="hidden-phone">Status</th>
-                        <th class="hidden-phone">操作</th>
+                        <th class="hidden-phone">UserName</th>
+                        <th class="hidden-phone">借出日期</th>
 
                     </tr>
 
@@ -106,16 +111,17 @@
                         <td class="hidden-phone"><!--{$list.ProductName|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.ProductID|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.Status|default:无}--></td>
-                        <td ><form method="post" action="?action=borrow&do=return" >
-                            <button class="btn btn-success" type="submit" style="">归还</button>
-                            <input type="text" name="BKid" value="<!--{$list.ProductID}-->" style="display:none;"/></form>
-                        </td>
+                        <td class="hidden-phone"><!--{$list.UserName|default:无}--></td>
+                        <td class="hidden-phone"><!--{$list.LentOutDate|default:无}--></td>
+                        <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
+                        <i class="icon-edit"></i>归还</a>
+                        </td>-->
 
 
 
                     </tr>
                     <!--{/foreach}-->
-                    {/if}
+                    <!--{/if}-->
                     </tbody>
 
                 </table>
