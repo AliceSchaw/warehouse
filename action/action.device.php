@@ -73,22 +73,28 @@ if($do==""){
 
 	//查询
 	//$sql="SELECT * FROM device where 1=1 and roleid=2 $search order by id desc LIMIT $pageNum,$numPerPage";
-    $sql="SELECT * FROM device where 1=1 $search order by Type desc LIMIT $pageNum,$numPerPage";
+    $sql="SELECT * FROM device where 1=1 $search order by ProductID LIMIT $pageNum,$numPerPage";
 
 
     $db->query($sql);
 	$row=$db->fetchAll();
 
     $sql1="SELECT distinct Type FROM device";
+    $sql2="SELECT distinct Category FROM device";
 
     $db->query($sql1);
     $Objrow=$db->fetchAll();
+    $db->query($sql2);
+    $Objrow2=$db->fetchAll();
 
 	//echo $row;
+	$_SESSION['Obj']="";
+	$_SESSION['Obj2']="";
 	//模版
 	$smt = new smarty();smarty_cfg($smt);
 	$smt->assign('row',$row);
     $smt->assign('Objrow',$Objrow);
+    $smt->assign('Objrow2',$Objrow2);
 	$smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
 
 	$smt->assign('pageNum',$_GET[pageNum]); //当前页数
@@ -122,7 +128,7 @@ if($do=="add"){
 	
 	//if(!$_POST[url]){echo error($msg);exit;}
 	$created_at = time();
-	$sql="INSERT INTO device(Type,Category,Vendor,ProductID,ProductName,P_Date)VALUES('$_POST[Type]','$_POST[Category]','$_POST[Vendor]','$_POST[ProductID]','$_POST[ProductName]','$created_at')";
+	$sql="INSERT INTO device(Type,Category,Vendor,ProductID,ProductName,Status,REV,P_Date)VALUES('$_POST[Type]','$_POST[Category]','$_POST[Vendor]','$_POST[ProductID]','$_POST[ProductName]','$_POST[Status]','$_POST[REV]','$created_at')";
 	if($db->query($sql)){echo success($msg,"?action=address");}else{echo error($msg);}
 	exit;
 }
@@ -160,7 +166,7 @@ if($do=="updata"){
 	`Vendor` = '$_POST[Vendor]',
 	`ProductID` = '$_POST[ProductID]',
 	`ProductName` = '$_POST[ProductName]',
-	`XorA` = '$_POST[XorA]',
+	`REV` = '$_POST[REV]',
 	`Status`='$_POST[Status]' WHERE `ProductID` ='$_POST[ProductID]' LIMIT 1";
 
     if($db->query($sql)){echo success($msg,"?action=address");}else{echo error($msg);}
@@ -185,34 +191,49 @@ if($do=="select"){
     {
         $search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,XorA) like '%".strip_tags($keywords)."%'";
     }
-if($_POST[Obj]!=""){
-    	$_SESSION['Obj']=$_POST[Obj];
-}
+	if($_POST[Obj]!=""){
+	    	$_SESSION['Obj']=$_POST[Obj];
+	    	}
+	if($_POST[Obj2]!=""){
+	    	$_SESSION['Obj2']=$_POST[Obj2];
+	    	}
+	if($_SESSION['Obj']!=""&&$_SESSION['Obj2']!=""){
+	    	$search .= " and Type LIKE '$_SESSION[Obj]' and Category LIKE '$_SESSION[Obj2]'";} 
+
+	else if($_SESSION['Obj2']!=""){
+	    	$search .= " and Category LIKE '$_SESSION[Obj2]'";} 
+	else if($_SESSION['Obj']!=""){
+	    	$search .= " and Type LIKE '$_SESSION[Obj]'";} 
+
     //设置分页
     if($_POST[numPerPage]==""){$numPerPage="20";}else{$numPerPage=$_POST[numPerPage];}
     if($_GET[pageNum]==""||$_GET[pageNum]=="0" ){$pageNum="0";}else{$pageNum=($_GET[pageNum]-1)*$numPerPage;}
     //$num=mysql_query("SELECT * FROM device where 1=1 and roleid=2 $search");//当前频道条数
-    $num=mysql_query("SELECT * FROM device where Type LIKE '$_SESSION[Obj]' $search");//当前频道条数
+    $num=mysql_query("SELECT * FROM device where 1=1 $search");//当前频道条数
     $total=mysql_num_rows($num);//总条数
     $page=new page(array('total'=>$total,'perpage'=>$numPerPage));
 
     //查询
     //$sql="SELECT * FROM device where 1=1 and roleid=2 $search order by id desc LIMIT $pageNum,$numPerPage";
-    $sql="SELECT * FROM device where Type LIKE '$_SESSION[Obj]' $search order by Type desc LIMIT $pageNum,$numPerPage";
+    $sql="SELECT * FROM device where 1=1 $search order by ProductID LIMIT $pageNum,$numPerPage";
 
     $db->query($sql);
     $row=$db->fetchAll();
 
     $sql1="SELECT distinct Type FROM device";
+    $sql2="SELECT distinct Category FROM device";
 
     $db->query($sql1);
     $Objrow=$db->fetchAll();
+    $db->query($sql2);
+    $Objrow2=$db->fetchAll();
 
     //echo $row;
     //模版
     $smt = new smarty();smarty_cfg($smt);
     $smt->assign('row',$row);
     $smt->assign('Objrow',$Objrow);
+    $smt->assign('Objrow2',$Objrow2);
     $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
 
     $smt->assign('pageNum',$_GET[pageNum]); //当前页数
@@ -223,6 +244,6 @@ if($_POST[Obj]!=""){
     $smt->assign('title',"设备管理");
     $smt->display('device_list.htm');
     exit;
+	
 }
-
 ?>

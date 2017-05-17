@@ -27,6 +27,7 @@
 						<th width="32">工号</th>
 						<th width="42">姓名</th>
 						<th width="47">邮箱</th>
+						<th width="47">部门</th>
 						<th width="90" class="hidden-phone">中文名</th>
 						<th width="130">操作</th>
 					  </tr>
@@ -38,6 +39,7 @@
 					<td><!--{$row.UserName}--></td>
 					<td><!--{$row.Name}--></td>
 					<td><!--{$row.MailAddress}--></td>
+					<td><!--{$row.Division}--></td>
 					<td><!--{$row.ChineseName}--></td>
 					<td>
 {if $smarty.session.roleid == "1" }	

@@ -29,7 +29,7 @@
 
 					  <tr>
 
-						  <th><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
+						  <th class="hidden-phone"><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
 							<option value="" selected="selected">Type</option>
 
 							<?php $_from = $this->_var['Objrow']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'Typelist');if (count($_from)):
@@ -39,13 +39,22 @@
 
 							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 						  </select></th>
-						<th class="hidden-phone">Category</th>
+						  <th class="hidden-phone"><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()">
+							<option value="" selected="selected">Category</option>
+
+							<?php $_from = $this->_var['Objrow2']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'Typelist');if (count($_from)):
+    foreach ($_from AS $this->_var['Typelist']):
+?>
+							<option value="<?php echo $this->_var['Typelist']['Category']; ?>"><?php echo $this->_var['Typelist']['Category']; ?></option>
+
+							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+						  </select></th>
 						<th class="hidden-phone">Vendor</th>
 						  <th class="hidden-phone">ProductID</th>
 						<th class="hidden-phone">ProductName</th>
 						  <th class="hidden-phone">Status</th>
 						  <th class="hidden-phone">Borrower</th>
-						    <th class="hidden-phone">XorA</th>
+						    <th class="hidden-phone">REV</th>
 
 
 						<?php if ($_SESSION['roleid'] == "1"): ?>
@@ -68,7 +77,7 @@
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['ProductName']) ? '无' : $this->_var['list']['ProductName']; ?></td>
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['Status']) ? '无' : $this->_var['list']['Status']; ?></td>
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['UserName']) ? '' : $this->_var['list']['UserName']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['XorA']) ? '' : $this->_var['list']['XorA']; ?></td>
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['REV']) ? '' : $this->_var['list']['REV']; ?></td>
 
 
 

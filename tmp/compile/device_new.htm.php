@@ -48,12 +48,7 @@
           <div class="control-group">
               <label for="input01" class="control-label">版本（XorA）：</label>
               <div class="controls">
-                  <label class="checkbox inline">
-                      <input type="radio"   name="XorA" value="X" <?php if ($this->_var['row']['XorA'] == "X"): ?>checked<?php endif; ?>	/> X
-                  </label>
-                  <label class="checkbox inline">
-                      <input type="radio"  name="XorA" value="A" <?php if ($this->_var['row']['XorA'] == "A"): ?>checked<?php endif; ?>	/> A
-                  </label>
+                 <input type="text" id="input06" name="REV" class="input-xlarge" value="<?php echo $this->_var['row']['REV']; ?>" >
               </div>
           </div>
           <div class="control-group">

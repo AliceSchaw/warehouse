@@ -27,6 +27,7 @@
 						<th width="32">工号</th>
 						<th width="42">姓名</th>
 						<th width="47">邮箱</th>
+						<th width="47">部门</th>
 						<th width="90" class="hidden-phone">中文名</th>
 						<th width="130">操作</th>
 					  </tr>
@@ -40,6 +41,7 @@
 					<td><?php echo $this->_var['row']['UserName']; ?></td>
 					<td><?php echo $this->_var['row']['Name']; ?></td>
 					<td><?php echo $this->_var['row']['MailAddress']; ?></td>
+					<td><?php echo $this->_var['row']['Division']; ?></td>
 					<td><?php echo $this->_var['row']['ChineseName']; ?></td>
 					<td>
 <?php if ($_SESSION['roleid'] == "1"): ?>	

@@ -29,7 +29,7 @@
 
 					  <tr>
 
-						  <th><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
+						  <th class="hidden-phone"><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
 							<option value="" selected="selected">Type</option>
 
 							<!--{foreach from=$Objrow item=Typelist}-->
@@ -37,13 +37,20 @@
 
 							<!--{/foreach}-->
 						  </select></th>
-						<th class="hidden-phone">Category</th>
+						  <th class="hidden-phone"><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()">
+							<option value="" selected="selected">Category</option>
+
+							<!--{foreach from=$Objrow2 item=Typelist}-->
+							<option value="<!--{$Typelist.Category}-->"><!--{$Typelist.Category}--></option>
+
+							<!--{/foreach}-->
+						  </select></th>
 						<th class="hidden-phone">Vendor</th>
 						  <th class="hidden-phone">ProductID</th>
 						<th class="hidden-phone">ProductName</th>
 						  <th class="hidden-phone">Status</th>
 						  <th class="hidden-phone">Borrower</th>
-						    <th class="hidden-phone">XorA</th>
+						    <th class="hidden-phone">REV</th>
 
 
 						{if $smarty.session.roleid == "1" }
@@ -64,7 +71,7 @@
 					<td class="hidden-phone"><!--{$list.ProductName|default:无}--></td>
 					<td class="hidden-phone"><!--{$list.Status|default:无}--></td>
 					<td class="hidden-phone"><!--{$list.UserName|default:}--></td>
-					<td class="hidden-phone"><!--{$list.XorA|default:}--></td>
+					<td class="hidden-phone"><!--{$list.REV|default:}--></td>
 
 
 

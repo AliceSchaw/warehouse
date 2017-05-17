@@ -43,18 +43,13 @@
                         <input type="text" id="input05" name="ProductName" class="input-xlarge" value="<?php echo $this->_var['row']['ProductName']; ?>" >
                     </div>
                 </div>
-                <div class="control-group">
-                    <label for="input01" class="control-label">版本（XorA）：</label>
-                    <div class="controls">
-                        <label class="checkbox inline">
-                            <input type="radio"   name="XorA" value="X" <?php if ($this->_var['row']['XorA'] == "X"): ?>checked<?php endif; ?>	/> X
-                        </label>
-                        <label class="checkbox inline">
-                            <input type="radio"  name="XorA" value="A" <?php if ($this->_var['row']['XorA'] == "A"): ?>checked<?php endif; ?>	/> A
-                        </label>
-                    </div>
-                </div>
-                <div class="control-group">
+             <div class="control-group">
+              <label for="input06" class="control-label">版本（XorA）：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="REV" class="input-xlarge" value="<?php echo $this->_var['row']['REV']; ?>" >
+              </div>
+             </div>
+             <div class="control-group">
                     <label for="input01" class="control-label">状态（Status）：</label>
                     <?php if ($this->_var['row']['UserName'] == ""): ?>
                     <div class="controls">

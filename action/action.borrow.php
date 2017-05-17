@@ -42,9 +42,9 @@ if($do=="borrow")
 {
     if (preg_match('/^[a-zA-Z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/', $_POST['IndexID']))
     {
-
+        //检测用户名是否存在
         $search .= " and UserName like '$_POST[IndexID]'";    
-        $sql1="SELECT * FROM user where 1=1 $search";
+        $sql1="SELECT UserName FROM user where 1=1 $search";
 
         $db->query($sql1);
         $row1=$db->fetchAll();

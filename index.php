@@ -11,7 +11,7 @@ error_reporting(0);
 $cfg["dbhost"]="localhost";  				//数据库主机名
 $cfg["dbuser"]="root";		  				//数据库用户名
 $cfg["dbpass"]=""; 					        //数据库密码
-$cfg["dbname"]="qtwarehouse";  				//数据库名称
+$cfg["dbname"]="test";  				//数据库名称
 $cfg["website"]="http://localhost/qwh";		//网站域名
 $cfg["webtitle"]="QT 库房系统";              //系统名称
 $cfg["version"]="V5.7.14";                   //版本

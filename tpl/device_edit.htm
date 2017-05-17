@@ -43,18 +43,13 @@
                         <input type="text" id="input05" name="ProductName" class="input-xlarge" value="<!--{$row.ProductName}-->" >
                     </div>
                 </div>
-                <div class="control-group">
-                    <label for="input01" class="control-label">版本（XorA）：</label>
-                    <div class="controls">
-                        <label class="checkbox inline">
-                            <input type="radio"   name="XorA" value="X" <!--{if $row.XorA == "X" }-->checked<!--{/if}-->	/> X
-                        </label>
-                        <label class="checkbox inline">
-                            <input type="radio"  name="XorA" value="A" <!--{if $row.XorA== "A" }-->checked<!--{/if}-->	/> A
-                        </label>
-                    </div>
-                </div>
-                <div class="control-group">
+             <div class="control-group">
+              <label for="input06" class="control-label">版本（XorA）：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="REV" class="input-xlarge" value="<!--{$row.REV}-->" >
+              </div>
+             </div>
+             <div class="control-group">
                     <label for="input01" class="control-label">状态（Status）：</label>
                     <!--{if $row.UserName==""}-->
                     <div class="controls">

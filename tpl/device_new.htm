@@ -48,12 +48,7 @@
           <div class="control-group">
               <label for="input01" class="control-label">版本（XorA）：</label>
               <div class="controls">
-                  <label class="checkbox inline">
-                      <input type="radio"   name="XorA" value="X" <!--{if $row.XorA == "X" }-->checked<!--{/if}-->	/> X
-                  </label>
-                  <label class="checkbox inline">
-                      <input type="radio"  name="XorA" value="A" <!--{if $row.XorA== "A" }-->checked<!--{/if}-->	/> A
-                  </label>
+                 <input type="text" id="input06" name="REV" class="input-xlarge" value="<!--{$row.REV}-->" >
               </div>
           </div>
           <div class="control-group">
