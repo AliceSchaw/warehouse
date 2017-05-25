@@ -122,7 +122,7 @@
 		  <i class="icon-user icon-white" ></i> <span style="color:#FFFFFF;"><!--{$smarty.session.username}--></span>
 		</p>
 		<ul class="nav">
-			<li <!--{if strtolower($smarty.get.action) == ''}-->class="active"<!--{/if}-->><a href="<!--{$cfg.website}-->"><i class="icon-home icon-white"></i> HOME</a></li>
+			<li <!--{if strtolower($smarty.get.action) == ''||strtolower($smarty.get.action) == 'borrow'}-->class="active"<!--{/if}-->><a href="<!--{$cfg.website}-->"><i class="icon-home icon-white"></i> HOME</a></li>
 
 
 			<li <!--{if strtolower($smarty.get.action) == 'address'}-->class="active"<!--{/if}--> ><a href="?action=address"><i class="icon-book icon-white"></i> 设备管理</a></li>

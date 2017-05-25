@@ -11,10 +11,10 @@ error_reporting(0);
 $cfg["dbhost"]="localhost";  				//数据库主机名
 $cfg["dbuser"]="root";		  				//数据库用户名
 $cfg["dbpass"]=""; 					        //数据库密码
-$cfg["dbname"]="test";  				//数据库名称
+$cfg["dbname"]="qtwarehouse";  				//数据库名称
 $cfg["website"]="http://localhost/qwh";		//网站域名
 $cfg["webtitle"]="QT 库房系统";              //系统名称
-$cfg["version"]="V5.7.14";                   //版本
+$cfg["version"]="V5.7.14";                  //版本
 
 //引入类库及公共方法
 @define("CORE",dirname(__FILE__)."/"); 	    //根目录
@@ -40,7 +40,7 @@ $sql_user="SELECT Name,UserName FROM `user`";
 $db->query($sql_user);
 $user_arr=$db->fetchAll();
 foreach($user_arr as $key=>$val){
-	$user_list[$user_arr[$key][id]]=$user_arr[$key][UserName];	 //用户数组
+	$user_list[$user_arr[$key][UserName]]=$user_arr[$key][Name];	 //用户数组
 }
 
 //执行页面

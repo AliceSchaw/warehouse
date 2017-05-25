@@ -122,7 +122,7 @@
 		  <i class="icon-user icon-white" ></i> <span style="color:#FFFFFF;"><?php echo $_SESSION['username']; ?></span>
 		</p>
 		<ul class="nav">
-			<li <?php if (strtolower ( $_GET['action'] ) == ''): ?>class="active"<?php endif; ?>><a href="<?php echo $this->_var['cfg']['website']; ?>"><i class="icon-home icon-white"></i> HOME</a></li>
+			<li <?php if (strtolower ( $_GET['action'] ) == '' || strtolower ( $_GET['action'] ) == 'borrow'): ?>class="active"<?php endif; ?>><a href="<?php echo $this->_var['cfg']['website']; ?>"><i class="icon-home icon-white"></i> HOME</a></li>
 
 
 			<li <?php if (strtolower ( $_GET['action'] ) == 'address'): ?>class="active"<?php endif; ?> ><a href="?action=address"><i class="icon-book icon-white"></i> 设备管理</a></li>

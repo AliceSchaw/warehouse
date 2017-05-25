@@ -76,7 +76,7 @@ if($do==""){
 
     if($keywords!="")
     {
-        $search .= " and concat(Name,MailAddress,Division,ChineseName,UserName) like '%".strip_tags($keywords)."%'";
+        $search .= " and concat(Name,Division,ChineseName,UserName) like '%".strip_tags($keywords)."%'";
     }
 
 	if($_POST['time_start']!="" && $_POST['time_over']!=""){
@@ -148,8 +148,8 @@ if($do=="add"){
 	$db->query($sql);
 	if($db->fetchRow()){echo  "<script>alert(\"用户名已存在!\");window.location=\"index.php?action=user&do=reg\";</script>";exit();}
 	$created_at = time();
-	$sql="INSERT INTO `user` (`Name` ,`UserName` ,`password` ,`MobilePhone` ,`Division` ,`MailAddress`)
-	VALUES ('$_POST[name]','$_POST[username]', '$password', '$_POST[mobilephone]','$_POST[division]','$_POST[mailaddress]');";
+	$sql="INSERT INTO `user` (`Name` ,`UserName` ,`password` ,`MobilePhone` ,`Division` ,`MailAddress`,`roleid`)
+	VALUES ('$_POST[name]','$_POST[username]', '$password', '$_POST[mobilephone]','$_POST[division]','$_POST[mailaddress]','$_POST[roleid]');";
 	if($db->query($sql)){echo success($msg,"?action=user");}else{echo error($msg);}
 	exit;
 }

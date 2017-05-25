@@ -29,10 +29,10 @@
           </div>
 
           <div class="control-group">
-              <label for="input01" class="control-label">部门：</label>
+              <label for="input01" class="control-label">部&nbsp;&nbsp;&nbsp;&nbsp;门：</label>
               <div class="controls">
                   <select name="Division">
-                      <option value ="1STD10" selected="<?php echo $this->_var['row']['Division']; ?>"><?php echo $this->_var['row']['Division']; ?></option>
+                      <option value ="<?php echo $this->_var['row']['Division']; ?>" selected="selected"><?php echo $this->_var['row']['Division']; ?></option>
                       <option value ="1STD10">1STD10</option>
                       <option value="1STD20">1STD20</option>
                       <option value="1STD30">1STD30</option>

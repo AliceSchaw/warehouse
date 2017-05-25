@@ -17,7 +17,6 @@
                 <option value="Category">Category</option>
                 <option value="Status">Status</option>
                 <option value="ProductName" selected="selected">ProductName</option>
-                <option value="XorA">XorA</option>
             </select>
             <input type="text" name="keywords" class="input-medium" value="<!--{$smarty.request.keywords}-->"  placeholder="关键字">
             <!--{$select_userlist}-->
@@ -37,8 +36,8 @@
                         <th class="hidden-phone">Vendor</th>
                         <th class="hidden-phone">ProductID</th>
                         <th class="hidden-phone">ProductName</th>
+                        <th class="hidden-phone">REV</th>
                         <th class="hidden-phone">Status</th>
-                        <th class="hidden-phone">XorA</th>
                         <th class="hidden-phone">借出日期</th>
                     </tr>
                     </thead>
@@ -52,8 +51,8 @@
                         <td class="hidden-phone"><!--{$row.Vendor|default:无}--></td>
                         <td class="hidden-phone"><!--{$row.ProductID|default:无}--></td>
                         <td class="hidden-phone"><!--{$row.ProductName|default:无}--></td>
-                        <td class="hidden-phone"><!--{$row.Status|default:无}--></td>
-                        <td class="hidden-phone"><!--{$row.XorA|default:无}--></td>
+                        <td class="hidden-phone"><!--{$row.REV|default: }--></td>
+                        <td class="hidden-phone"><!--{$row.Status|default: }--></td>
                         <td class="hidden-phone"><!--{$row.LentOutDate}--></td>
 
                     <!--{/foreach}-->
@@ -85,11 +84,11 @@
 
             <div class="span12">
             <div align="center">
-        <form class="form-search" action="?action=borrow&do=borrow" method="post" >
+        <form class="form-search" action="?action=borrow&do=borrow" method="post" autocomplete="off">
             <input type="text" name="IndexID" width="200" value=""  placeholder="请输入工号/设备ID" autofocus>
             <button type="submit" class="btn"><i class="icon-search"></i>提交</button>
         </form></div>
-               <!--{if $smarty.session.inputid != "" && $row!=""}-->
+               <!--{if $row!=""}-->
                 <table class="table table-bordered table-striped">
                     <thead>
  
@@ -99,6 +98,7 @@
                         <th class="hidden-phone">ProductID</th>
                         <th class="hidden-phone">Status</th>
                         <th class="hidden-phone">UserName</th>
+                        <th class="hidden-phone">Name</th>
                         <th class="hidden-phone">借出日期</th>
 
                     </tr>
@@ -112,20 +112,26 @@
                         <td class="hidden-phone"><!--{$list.ProductID|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.Status|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.UserName|default:无}--></td>
+                        <td class="hidden-phone"><!--{$user_list[$list.UserName]|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.LentOutDate|default:无}--></td>
                         <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
                         <i class="icon-edit"></i>归还</a>
                         </td>-->
-
+                
 
 
                     </tr>
-                    <!--{/foreach}-->
-                    <!--{/if}-->
+                    <!--{/foreach}-->              
                     </tbody>
 
                 </table>
-
+                <div class="pagination pagination-centered">
+                    <ul class="">
+                        <li><span class="btn">共<!--{$total}-->条</span></li>
+                        <!--{$page}-->
+                    </ul>
+                </div>
+                   <!--{/if}-->
             </div><!--/span-->
         </div><!--/row-->
 

@@ -26,7 +26,10 @@ if($do==""){
   $db->query($sql);
   $list=$db->fetchAll();
   //echo $list;
+
+  unset($_SESSION['inputid']);
   //模版
+
   $smt = new smarty();smarty_cfg($smt);
   $smt->assign('list',$list);
   $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数

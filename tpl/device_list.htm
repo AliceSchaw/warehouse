@@ -1,7 +1,7 @@
 ﻿<!--{include file="head.htm"}-->
 <!--{include file="nav.htm"}-->
 
-<div class="span11">
+<div class="span12">
 
 		  <div class="page-header">
             <h3><!--{$title}--></h3>
@@ -16,7 +16,7 @@
 
 		<input type="text" name="keywords" id="keywords" class="input-medium" value="<!--{$smarty.request.keywords}-->"  placeholder="关键字">
 
-		<a href="?action=address&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn"><i class="icon-search"></i> 查询</a>
+		<a href="?action=address&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn" id="ToSearch"><i class="icon-search"></i> 查询</a>
 		<a href="?action=address" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>
 
 	</form>
@@ -29,7 +29,7 @@
 
 					  <tr>
 
-						  <th class="hidden-phone"><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
+						  <th><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()" style="width: 70px">
 							<option value="" selected="selected">Type</option>
 
 							<!--{foreach from=$Objrow item=Typelist}-->
@@ -37,7 +37,7 @@
 
 							<!--{/foreach}-->
 						  </select></th>
-						  <th class="hidden-phone"><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()">
+						  <th><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()" style="width: 110px">
 							<option value="" selected="selected">Category</option>
 
 							<!--{foreach from=$Objrow2 item=Typelist}-->
@@ -45,19 +45,19 @@
 
 							<!--{/foreach}-->
 						  </select></th>
+						 <th class="hidden-phone">Interface</th>
 						<th class="hidden-phone">Vendor</th>
-						  <th class="hidden-phone">ProductID</th>
-						<th class="hidden-phone">ProductName</th>
-						  <th class="hidden-phone">Status</th>
-						  <th class="hidden-phone">Borrower</th>
-						    <th class="hidden-phone">REV</th>
-
-
+						<th class="hidden-phone">ProductID</th>
+						<th class="hidden-phone" width="120">Product Description</th>
+						<th class="hidden-phone">Status</th>
+						<th class="hidden-phone" width="80">借用人</th>
+						<th class="hidden-phone" width="40">借出时间</th>
+						<th class="hidden-phone">P_Date</th>
 						{if $smarty.session.roleid == "1" }
-						<th width="130pix">操作</th>
+						<th width="100">操作</th>
 						{else}
-						<th class="hidden-phone">操作</th>
-					    {/if}	
+						<th class="hidden-phone" width="100">操作</th>
+						{/if}
 						</tr>	
 					</thead></form>
 					<tbody>
@@ -66,24 +66,30 @@
 				<tr>
 					<td><!--{$list.Type}--></td>
 					<td class="hidden-phone"><!--{$list.Category}--></td>
-					<td class="hidden-phone"><!--{$list.Vendor|default:无}--></td>
-					<td class="hidden-phone"><!--{$list.ProductID|default:无}--></td>
-					<td class="hidden-phone"><!--{$list.ProductName|default:无}--></td>
-					<td class="hidden-phone"><!--{$list.Status|default:无}--></td>
-					<td class="hidden-phone"><!--{$list.UserName|default:}--></td>
-					<td class="hidden-phone"><!--{$list.REV|default:}--></td>
-
-
-
-
-
+					<td class="hidden-phone"><!--{$list.Interface|default:}--></td>
+					<td class="hidden-phone"><!--{$list.Vendor|default:}--></td>
+					<td class="hidden-phone"><!--{$list.ProductID|default:}--></td>
+					<td class="hidden-phone">
+						<!--{if $list.REV!=""}-->
+						<!--{$list.REV|default:}-->&nbsp;
+						<!--{/if}-->
+						<!--{$list.ProductName|default:}-->&nbsp;
+						<!--{$list.DP/N|default:}-->&nbsp;
+						<!--{$list.ModelNum|default:}-->&nbsp;
+						<!--{$list.FW|default:}-->
+					</td>
+					<td class="hidden-phone"><!--{$list.Status|default:}--></td>
+					<td class="hidden-phone"><!--{$user_list[$list.UserName]|default:}--></td>
+					<td class="hidden-phone"><!--{$list.LentOutDate|default:}--></td>
+					<td class="hidden-phone"><!--{$list.P_Date|default:}--></td>
 					{if $smarty.session.roleid == "1" }
 					<td>
-					<a class="btn btn-small" href="?action=address&do=edit&ProductID=<!--{$list.ProductID}-->">
-						<i class="icon-edit"></i>编辑</a>
-					<a class="btn btn-small" href="?action=address&do=del&ProductID=<!--{$list.ProductID}-->" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>
-					删除</a>
-						</td>{else}<td class="hidden-phone">无权限</td>{/if}
+
+						<a class="btn btn-small" href="?action=address&do=edit&ProductID=<!--{$list.ProductID}-->">
+							<i class="icon-edit"></i>编辑</a>
+						<a class="btn btn-small" href="?action=address&do=del&ProductID=<!--{$list.ProductID}-->" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>
+							删除</a>
+					</td>{else}<td class="hidden-phone">无权限</td>{/if}
 				</tr>
 				<!--{/foreach}-->
  

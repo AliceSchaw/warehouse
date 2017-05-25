@@ -15,42 +15,104 @@
 	  <form class="form-horizontal" method="post" action="?action=address&do=add" align="left">
 
 
+  <div class="control-group">
+            <label for="input01" class="control-label">Type：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="Type" value="<?php echo $this->_var['row']['Type']; ?>">
+            </div>
+          </div>
+          
+
+      <div class="control-group">
+            <label for="input01" class="control-label">Interface：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="Interface" value="<?php echo $this->_var['row']['Interface']; ?>">
+            </div>
+          </div>
+          
+          
           <div class="control-group">
-              <label for="input01" class="control-label">类别（Type）：</label>
-              <div class="controls">
-                  <input type="text" id="input01" name="Type" class="input-xlarge" value="<?php echo $this->_var['row']['Type']; ?>" >
-              </div>
+            <label for="input01" class="control-label">Category：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="Category" value="<?php echo $this->_var['row']['Category']; ?>">
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label for="input01" class="control-label">Vendor：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="Vendor" value="<?php echo $this->_var['row']['Vendor']; ?>">
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label for="input01" class="control-label">ProductID：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="ProductID" value="<?php echo $this->_var['row']['ProductID']; ?>"> 
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label for="input01" class="control-label">REV：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="REV" value="<?php echo $this->_var['row']['REV']; ?>"> 
+            </div>
           </div>
           <div class="control-group">
-              <label for="input02" class="control-label">种类（Category）：</label>
-              <div class="controls">
-                  <input type="text" id="input02" name="Category" class="input-xlarge" value="<?php echo $this->_var['row']['Category']; ?>" >
-              </div>
+            <label for="input01" class="control-label">FW：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="FW" value="<?php echo $this->_var['row']['FW']; ?>"> 
+            </div>
           </div>
           <div class="control-group">
-              <label for="input03" class="control-label">供应商（Vendor）：</label>
-              <div class="controls">
-                  <input type="text" id="input03" name="Vendor" class="input-xlarge" value="<?php echo $this->_var['row']['Vendor']; ?>" >
-              </div>
+            <label for="input01" class="control-label">工具室料号：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="工具室料号" value="<?php echo $this->_var['row']['工具室料号']; ?>"> 
+            </div>
           </div>
           <div class="control-group">
-              <label for="input04" class="control-label">设备ID（ProductID）：</label>
-              <div class="controls">
-                  <input type="text" id="input04" name="ProductID" class="input-xlarge" value="<?php echo $this->_var['row']['ProductID']; ?>">
-              </div>
+            <label for="input01" class="control-label">PropertyNum：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="PropertyNum" value="<?php echo $this->_var['row']['PropertyNum']; ?>"> 
+            </div>
+          </div>   
+           <div class="control-group">
+            <label for="input01" class="control-label">DP/N：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="DPN" value="<?php echo $this->_var['row']['DPN']; ?>"> 
+            </div>
           </div>
           <div class="control-group">
-              <label for="input05" class="control-label">设备名称（Name）：</label>
-              <div class="controls">
-                  <input type="text" id="input05" name="ProductName" class="input-xlarge" value="<?php echo $this->_var['row']['ProductName']; ?>" >
-              </div>
+            <label for="input01" class="control-label">ModelNum：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="ModelNum" value="<?php echo $this->_var['row']['ModelNum']; ?>"> 
+            </div>
           </div>
           <div class="control-group">
-              <label for="input01" class="control-label">版本（XorA）：</label>
-              <div class="controls">
-                 <input type="text" id="input06" name="REV" class="input-xlarge" value="<?php echo $this->_var['row']['REV']; ?>" >
-              </div>
-          </div>
+            <label for="input01" class="control-label">Source：</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge" name="Source" value="<?php echo $this->_var['row']['Source']; ?>"> 
+            </div>
+          </div>  
+          <div class="control-group">
+            <label for="input01" class="control-label">ProductName：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="ProductName" value="<?php echo $this->_var['row']['ProductName']; ?>"> 
+            </div>
+          </div> 
+
+          <div class="control-group">
+            <label for="input01" class="control-label">UserName：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="UserName" value="<?php echo $this->_var['row']['UserName']; ?>"> 
+            </div>
+          </div> 
+          <div class="control-group">
+            <label for="input01" class="control-label">LentOutDate：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="LentOutDate" value="<?php echo $this->_var['row']['LentOutDate']; ?>"> 
+            </div>
+          </div>                  
           <div class="control-group">
               <label for="input01" class="control-label">状态（Status）：</label>
               <div class="controls">

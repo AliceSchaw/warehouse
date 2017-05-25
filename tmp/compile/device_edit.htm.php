@@ -54,7 +54,7 @@
                     <?php if ($this->_var['row']['UserName'] == ""): ?>
                     <div class="controls">
                         <label class="checkbox inline">
-                            <input type="radio"   name="Status" value="In Lab !!" <?php if ($this->_var['row']['Status'] == " In Lab ! ! "): ?>checked<?php endif; ?>/>In Lab !!
+                            <input type="radio"   name="Status" value="In Lab !!" <?php if ($this->_var['row']['Status'] == ' In Lab ! ! '): ?>checked<?php endif; ?>/>In Lab !!
                         </label>
                         <label class="checkbox inline">
                             <input type="radio"  name="Status" value="退库" <?php if ($this->_var['row']['Status'] == "退库"): ?>checked<?php endif; ?>	/>退库
@@ -66,7 +66,7 @@
                     <?php else: ?>
 
                     <div class="controls">
-                        <input type="text" name="Status"  class="input-xlarge" value="Been Borrowe" readonly>
+                        <input type="text" name="Status"  class="input-xlarge" value="Been Borrowed !!" readonly>
                     </div>
                     <?php endif; ?>
                 </div>

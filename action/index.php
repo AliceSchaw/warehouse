@@ -35,11 +35,11 @@ $keywords=empty($_GET['keywords'])?'':trim($_GET['keywords']);  //get userid值
 
 
 //读取用户数组
-$sql_user="SELECT Name,username FROM `users`";
+$sql_user="SELECT Name,UserName FROM `users`";
 $db->query($sql_user);
 $user_arr=$db->fetchAll();
 foreach($user_arr as $key=>$val){
-	$user_list[$user_arr[$key][id]]=$user_arr[$key][username];	 //用户数组
+	$user_list[$user_arr[$key][UserName]]=$user_arr[$key][Name];	 //用户数组
 }
 
 //执行页面

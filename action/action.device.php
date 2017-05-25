@@ -29,7 +29,7 @@ if($do=="export"){
         $ProductID=iconv('utf-8','gb2312',$row['ProductID']);
         $Status=iconv('utf-8','gb2312',$row['Status']);
         $UserName=iconv('utf-8','gb2312',$row['UserName']);
-        $XorA=iconv('utf-8','gb2312',$row['XorA']);
+        $REV=iconv('utf-8','gb2312',$row['REV']);
         $str .=$Type.",".$Category.",".$Vendor.",".$ProductName.",".$ProductID."\n";
         
     }
@@ -51,16 +51,16 @@ function export_csv($filename,$data) {
 
 //列表
 if($do==""){
-
+	//var_dump($user_list);
 	//判断检索值
     if($keywords!="")
     {
-    	$search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,XorA) like '%".strip_tags($keywords)."%'";
+    	$search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,REV) like '%".strip_tags($keywords)."%'";
     }
 	/*if($_POST['keywords']&&$_POST['obj'])
 	{$search .= " and $_POST[obj] like '%".strip_tags($_POST['keywords'])."%'";}
 	else
-	{$search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,XorA) like '%".strip_tags($_POST[keywords])."%'";}
+	{$search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,REV) like '%".strip_tags($_POST[keywords])."%'";}
 	*/
 
 	//设置分页
@@ -73,7 +73,7 @@ if($do==""){
 
 	//查询
 	//$sql="SELECT * FROM device where 1=1 and roleid=2 $search order by id desc LIMIT $pageNum,$numPerPage";
-    $sql="SELECT * FROM device where 1=1 $search order by ProductID LIMIT $pageNum,$numPerPage";
+    $sql="SELECT * FROM device where 1=1 $search order by P_Date desc LIMIT $pageNum,$numPerPage";
 
 
     $db->query($sql);
@@ -87,7 +87,7 @@ if($do==""){
     $db->query($sql2);
     $Objrow2=$db->fetchAll();
 
-	//echo $row;
+	//清空缓存
 	$_SESSION['Obj']="";
 	$_SESSION['Obj2']="";
 	//模版
@@ -113,24 +113,52 @@ if($do==""){
 
 //新建	
 if($do=="new"){	
-	If_rabc($action,$do); //检测权限
-	is_admin($action,$do); 
-	$smt = new smarty();smarty_cfg($smt);
-	//模版	
-	$smt->assign('title',"添加");
-	$smt->display('device_new.htm');
-	exit;
+	// If_rabc($action,$do); //检测权限
+	// is_admin($action,$do); 
+	// $smt = new smarty();smarty_cfg($smt);
+	// //模版	
+	// $smt->assign('title',"添加");
+	// $smt->display('device_new.htm');
+	// exit
+	    If_rabc($action,$do); 
+    is_admin($action,$do);
+    //查询
+     $sql="SELECT * FROM device ORDER BY P_Date DESC LIMIT 0,1";
+     $db->query($sql);
+     $row=$db->fetchRow();
+    //模版
+    $smt = new smarty();smarty_cfg($smt);
+    $smt->assign('row',$row);
+    $smt->display('device_new.htm');
+    exit;
 }
 
 //写入
 if($do=="add"){
-	If_rabc($action,$do); //检测权限
+	// If_rabc($action,$do); //检测权限
 	
 	//if(!$_POST[url]){echo error($msg);exit;}
-	$created_at = time();
-	$sql="INSERT INTO device(Type,Category,Vendor,ProductID,ProductName,Status,REV,P_Date)VALUES('$_POST[Type]','$_POST[Category]','$_POST[Vendor]','$_POST[ProductID]','$_POST[ProductName]','$_POST[Status]','$_POST[REV]','$created_at')";
-	if($db->query($sql)){echo success($msg,"?action=address");}else{echo error($msg);}
-	exit;
+	// $created_at=date("Y-m-d H:i:s");
+	// $sql="INSERT INTO device(Type,Category,Vendor,ProductID,ProductName,Status,REV,P_Date)VALUES('$_POST[Type]','$_POST[Category]','$_POST[Vendor]','$_POST[ProductID]','$_POST[ProductName]','$_POST[Status]','$_POST[REV]','$created_at')";
+	// echo $created_at;
+	// if($db->query($sql)){echo success($msg,"?action=address");}
+	// else{echo error($msg);}
+	// exit;
+	If_rabc($action,$do); //检测权限
+    is_admin($action,$do);
+    date_default_timezone_set("PRC");
+    $P_Date=date("Y.n.j H:i:s");
+    $sql="INSERT INTO `device`(`Type`,`Interface`,`Category`,`Vendor`,`ProductID`,`REV`,`FW`,`工具室料号`,
+ `PropertyNum`,`DPN`,`ModelNum`,`Source`,`ProductName`,`Status`,`P_Date`,`UserName`,`LentOutDate`)VALUES('$_POST[Type]',
+ '$_POST[Interface]','$_POST[Category]','$_POST[Vendor]','$_POST[ProductID]','$_POST[REV]','$_POST[FW]',
+ '$_POST[工具室料号]','$_POST[PropertyNum]','$_POST[DPN]','$_POST[ModelNum]','$_POST[Source]','$_POST[ProductName]',
+ '$_POST[Status]','$P_Date','$_POST[UserName]','$_POST[LentOutDate]')";
+ //echo $sql;
+    if($db->query($sql)){
+    	echo success($msg,"?action=address");
+	}
+    else{echo error($msg);}
+    exit;
 }
 
 
@@ -159,7 +187,7 @@ if($do=="updata"){
 
     if(!$_POST[ProductID]){echo error($msg);exit;}
     date_default_timezone_set("PRC");
-    $updated_at=date("Y-m-d H:i:s");
+    //$updated_at=date("Y-m-d H:i:s");
     $sql="UPDATE device SET
 	`Type` = '$_POST[Type]',
 	`Category` = '$_POST[Category]',
@@ -189,7 +217,7 @@ if($do=="select"){
     //判断检索值
     if($keywords!="")
     {
-        $search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,XorA) like '%".strip_tags($keywords)."%'";
+        $search .= " and concat(Type,ProductName,ProductID,Category,Vendor,Status,UserName,REV) like '%".strip_tags($keywords)."%'";
     }
 	if($_POST[Obj]!=""){
 	    	$_SESSION['Obj']=$_POST[Obj];

@@ -1,7 +1,7 @@
 <?php echo $this->fetch('head.htm'); ?>
 <?php echo $this->fetch('nav.htm'); ?>
 
-<div class="span11">
+<div class="span12">
 
 		  <div class="page-header">
             <h3><?php echo $this->_var['title']; ?></h3>
@@ -16,7 +16,7 @@
 
 		<input type="text" name="keywords" id="keywords" class="input-medium" value="<?php echo $_REQUEST['keywords']; ?>"  placeholder="关键字">
 
-		<a href="?action=address&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn"><i class="icon-search"></i> 查询</a>
+		<a href="?action=address&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn" id="ToSearch"><i class="icon-search"></i> 查询</a>
 		<a href="?action=address" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>
 
 	</form>
@@ -29,7 +29,7 @@
 
 					  <tr>
 
-						  <th class="hidden-phone"><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()">
+						  <th><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()" style="width: 70px">
 							<option value="" selected="selected">Type</option>
 
 							<?php $_from = $this->_var['Objrow']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'Typelist');if (count($_from)):
@@ -39,7 +39,7 @@
 
 							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 						  </select></th>
-						  <th class="hidden-phone"><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()">
+						  <th><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()" style="width: 110px">
 							<option value="" selected="selected">Category</option>
 
 							<?php $_from = $this->_var['Objrow2']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'Typelist');if (count($_from)):
@@ -49,19 +49,19 @@
 
 							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 						  </select></th>
+						 <th class="hidden-phone">Interface</th>
 						<th class="hidden-phone">Vendor</th>
-						  <th class="hidden-phone">ProductID</th>
-						<th class="hidden-phone">ProductName</th>
-						  <th class="hidden-phone">Status</th>
-						  <th class="hidden-phone">Borrower</th>
-						    <th class="hidden-phone">REV</th>
-
-
+						<th class="hidden-phone">ProductID</th>
+						<th class="hidden-phone" width="120">Product Description</th>
+						<th class="hidden-phone">Status</th>
+						<th class="hidden-phone" width="80">借用人</th>
+						<th class="hidden-phone" width="40">借出时间</th>
+						<th class="hidden-phone">P_Date</th>
 						<?php if ($_SESSION['roleid'] == "1"): ?>
-						<th width="130pix">操作</th>
+						<th width="100">操作</th>
 						<?php else: ?>
-						<th class="hidden-phone">操作</th>
-					    <?php endif; ?>	
+						<th class="hidden-phone" width="100">操作</th>
+						<?php endif; ?>
 						</tr>	
 					</thead></form>
 					<tbody>
@@ -72,24 +72,30 @@
 				<tr>
 					<td><?php echo $this->_var['list']['Type']; ?></td>
 					<td class="hidden-phone"><?php echo $this->_var['list']['Category']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['Vendor']) ? '无' : $this->_var['list']['Vendor']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['ProductID']) ? '无' : $this->_var['list']['ProductID']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['ProductName']) ? '无' : $this->_var['list']['ProductName']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['Status']) ? '无' : $this->_var['list']['Status']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['UserName']) ? '' : $this->_var['list']['UserName']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['REV']) ? '' : $this->_var['list']['REV']; ?></td>
-
-
-
-
-
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['Interface']) ? '' : $this->_var['list']['Interface']; ?></td>
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['Vendor']) ? '' : $this->_var['list']['Vendor']; ?></td>
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['ProductID']) ? '' : $this->_var['list']['ProductID']; ?></td>
+					<td class="hidden-phone">
+						<?php if ($this->_var['list']['REV'] != ""): ?>
+						<?php echo empty($this->_var['list']['REV']) ? '' : $this->_var['list']['REV']; ?>&nbsp;
+						<?php endif; ?>
+						<?php echo empty($this->_var['list']['ProductName']) ? '' : $this->_var['list']['ProductName']; ?>&nbsp;
+						<?php echo empty($this->_var['list']['DP/N']) ? '' : $this->_var['list']['DP/N']; ?>&nbsp;
+						<?php echo empty($this->_var['list']['ModelNum']) ? '' : $this->_var['list']['ModelNum']; ?>&nbsp;
+						<?php echo empty($this->_var['list']['FW']) ? '' : $this->_var['list']['FW']; ?>
+					</td>
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['Status']) ? '' : $this->_var['list']['Status']; ?></td>
+					<td class="hidden-phone"><?php echo empty($this->_var['user_list'][$this->_var['list']['UserName']]) ? '' : $this->_var['user_list'][$this->_var['list']['UserName']]; ?></td>
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['LentOutDate']) ? '' : $this->_var['list']['LentOutDate']; ?></td>
+					<td class="hidden-phone"><?php echo empty($this->_var['list']['P_Date']) ? '' : $this->_var['list']['P_Date']; ?></td>
 					<?php if ($_SESSION['roleid'] == "1"): ?>
 					<td>
-					<a class="btn btn-small" href="?action=address&do=edit&ProductID=<?php echo $this->_var['list']['ProductID']; ?>">
-						<i class="icon-edit"></i>编辑</a>
-					<a class="btn btn-small" href="?action=address&do=del&ProductID=<?php echo $this->_var['list']['ProductID']; ?>" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>
-					删除</a>
-						</td><?php else: ?><td class="hidden-phone">无权限</td><?php endif; ?>
+
+						<a class="btn btn-small" href="?action=address&do=edit&ProductID=<?php echo $this->_var['list']['ProductID']; ?>">
+							<i class="icon-edit"></i>编辑</a>
+						<a class="btn btn-small" href="?action=address&do=del&ProductID=<?php echo $this->_var['list']['ProductID']; ?>" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>
+							删除</a>
+					</td><?php else: ?><td class="hidden-phone">无权限</td><?php endif; ?>
 				</tr>
 				<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
  
