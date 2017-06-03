@@ -149,10 +149,10 @@ if($do=="add"){
     date_default_timezone_set("PRC");
     $P_Date=date("Y.n.j H:i:s");
     $sql="INSERT INTO `device`(`Type`,`Interface`,`Category`,`Vendor`,`ProductID`,`REV`,`FW`,`工具室料号`,
- `PropertyNum`,`DPN`,`ModelNum`,`Source`,`ProductName`,`Status`,`P_Date`,`UserName`,`LentOutDate`)VALUES('$_POST[Type]',
+ `PropertyNum`,`DPN`,`ModelNum`,`Source`,`ProductName`,`Status`,`P_Date`,`UserName`,`LentOutDate`,`Sign`,`Belong`)VALUES('$_POST[Type]',
  '$_POST[Interface]','$_POST[Category]','$_POST[Vendor]','$_POST[ProductID]','$_POST[REV]','$_POST[FW]',
  '$_POST[工具室料号]','$_POST[PropertyNum]','$_POST[DPN]','$_POST[ModelNum]','$_POST[Source]','$_POST[ProductName]',
- '$_POST[Status]','$P_Date','$_POST[UserName]','$_POST[LentOutDate]')";
+ '$_POST[Status]','$P_Date','$_POST[UserName]','$P_Date','$_POST[Sign]','$_POST[Belong]')";
  //echo $sql;
     if($db->query($sql)){
     	echo success($msg,"?action=address");
@@ -195,6 +195,11 @@ if($do=="updata"){
 	`ProductID` = '$_POST[ProductID]',
 	`ProductName` = '$_POST[ProductName]',
 	`REV` = '$_POST[REV]',
+	`BadEvent` = '$_POST[BadEvent]',
+	`BadSource` = '$_POST[BadSource]',
+	`BadDate` = '$_POST[BadDate]',
+	`Badlife` = '$_POST[Badlife]',
+	`Recorder` = '$_POST[Recorder]',
 	`Status`='$_POST[Status]' WHERE `ProductID` ='$_POST[ProductID]' LIMIT 1";
 
     if($db->query($sql)){echo success($msg,"?action=address");}else{echo error($msg);}

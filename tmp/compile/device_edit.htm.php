@@ -49,28 +49,56 @@
                  <input type="text" id="input06" name="REV" class="input-xlarge" value="<?php echo $this->_var['row']['REV']; ?>" >
               </div>
              </div>
+			<div class="control-group">
+              <label for="input06" class="control-label">设备不良现象：</label>
+              <div class="controls">
+                 <textarea rows="4" id="input06" name="BadEvent" class="input-xlarge" ><?php echo $this->_var['row']['BadEvent']; ?></textarea>
+              </div>
+             </div>
+			 <div class="control-group">
+              <label for="input06" class="control-label">设备不良原因：</label>
+              <div class="controls">
+                 <textarea rows="4" id="input06" name="BadSource" class="input-xlarge" ><?php echo $this->_var['row']['BadSource']; ?></textarea>
+              </div>
+             </div>
+			  <div class="control-group">
+              <label for="input06" class="control-label">设备记录日期：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="BadDate" class="input-xlarge" value="<?php echo $this->_var['row']['BadDate']; ?>" >
+              </div>
+             </div>
+			 <div class="control-group">
+              <label for="input06" class="control-label">使用寿命：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="Badlife" class="input-xlarge" value="<?php echo $this->_var['row']['Badlife']; ?>" >
+              </div>
+             </div>
+			 <div class="control-group">
+              <label for="input06" class="control-label">记录人：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="Recorder" class="input-xlarge" value="<?php echo $this->_var['row']['Recorder']; ?>" >
+              </div>
+             </div>
              <div class="control-group">
                     <label for="input01" class="control-label">状态（Status）：</label>
-                    <?php if ($this->_var['row']['UserName'] == ""): ?>
+
                     <div class="controls">
                         <label class="checkbox inline">
-                            <input type="radio"   name="Status" value="In Lab !!" <?php if ($this->_var['row']['Status'] == ' In Lab ! ! '): ?>checked<?php endif; ?>/>In Lab !!
+                            <input type="radio"   name="Status" value="未借出" <?php if ($this->_var['row']['Status'] == '未借出'): ?>checked<?php endif; ?>/>未借出
                         </label>
                         <label class="checkbox inline">
+                            <input type="radio"   name="Status" value="已借出" <?php if ($this->_var['row']['Status'] == "已借出"): ?>checked<?php endif; ?>	/>已借出
+                        </label>
+						<label class="checkbox inline">
                             <input type="radio"  name="Status" value="退库" <?php if ($this->_var['row']['Status'] == "退库"): ?>checked<?php endif; ?>	/>退库
                         </label>
                         <label class="checkbox inline">
-                            <input type="radio"   name="Status" value="Bad !!" <?php if ($this->_var['row']['Status'] == " Bad ! ! "): ?>checked<?php endif; ?>	/>Bad !!
+                            <input type="radio"   name="Status" value="已损坏" <?php if ($this->_var['row']['Status'] == "已损坏"): ?>checked<?php endif; ?>	/>已损坏
                         </label>
+						
                     </div>
-                    <?php else: ?>
 
-                    <div class="controls">
-                        <input type="text" name="Status"  class="input-xlarge" value="Been Borrowed !!" readonly>
-                    </div>
-                    <?php endif; ?>
                 </div>
-
 
 
 

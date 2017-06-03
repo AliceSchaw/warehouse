@@ -1,7 +1,7 @@
 <?php echo $this->fetch('head.htm'); ?>
 <?php echo $this->fetch('nav.htm'); ?>
 
-<div class="span12">
+<div class="span11">
 
 		  <div class="page-header">
             <h3><?php echo $this->_var['title']; ?></h3>
@@ -29,7 +29,7 @@
 
 					  <tr>
 
-						  <th><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()" style="width: 70px">
+						  <th width="85"><select name="Obj" id="select" class="input-small" value="Type" onchange="form.submit()" style="width: 85px" >
 							<option value="" selected="selected">Type</option>
 
 							<?php $_from = $this->_var['Objrow']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'Typelist');if (count($_from)):
@@ -39,7 +39,7 @@
 
 							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 						  </select></th>
-						  <th><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()" style="width: 110px">
+						  <th width="110"><select name="Obj2" id="select" class="input-medium" value="Category" onchange="form.submit()" style="width: 100px">
 							<option value="" selected="selected">Category</option>
 
 							<?php $_from = $this->_var['Objrow2']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'Typelist');if (count($_from)):
@@ -49,18 +49,18 @@
 
 							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 						  </select></th>
-						 <th class="hidden-phone">Interface</th>
+					   <!--  <th class="hidden-phone">Interface</th> -->
 						<th class="hidden-phone">Vendor</th>
 						<th class="hidden-phone">ProductID</th>
-						<th class="hidden-phone" width="120">Product Description</th>
+						<th class="hidden-phone" width="100">Product Description</th>
 						<th class="hidden-phone">Status</th>
 						<th class="hidden-phone" width="80">借用人</th>
-						<th class="hidden-phone" width="40">借出时间</th>
+						<th class="hidden-phone" width="80">借出时间</th>
 						<th class="hidden-phone">P_Date</th>
 						<?php if ($_SESSION['roleid'] == "1"): ?>
-						<th width="100">操作</th>
+						<th width="120">操作</th>
 						<?php else: ?>
-						<th class="hidden-phone" width="100">操作</th>
+						<th class="hidden-phone">操作</th>
 						<?php endif; ?>
 						</tr>	
 					</thead></form>
@@ -72,7 +72,6 @@
 				<tr>
 					<td><?php echo $this->_var['list']['Type']; ?></td>
 					<td class="hidden-phone"><?php echo $this->_var['list']['Category']; ?></td>
-					<td class="hidden-phone"><?php echo empty($this->_var['list']['Interface']) ? '' : $this->_var['list']['Interface']; ?></td>
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['Vendor']) ? '' : $this->_var['list']['Vendor']; ?></td>
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['ProductID']) ? '' : $this->_var['list']['ProductID']; ?></td>
 					<td class="hidden-phone">
@@ -93,8 +92,7 @@
 
 						<a class="btn btn-small" href="?action=address&do=edit&ProductID=<?php echo $this->_var['list']['ProductID']; ?>">
 							<i class="icon-edit"></i>编辑</a>
-						<a class="btn btn-small" href="?action=address&do=del&ProductID=<?php echo $this->_var['list']['ProductID']; ?>" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>
-							删除</a>
+						<a class="btn btn-small" href="?action=address&do=del&ProductID=<?php echo $this->_var['list']['ProductID']; ?>" onclick="if(!confirm( '确认要删除吗? ')){return false;}"><i class="icon-trash"></i>删除</a>
 					</td><?php else: ?><td class="hidden-phone">无权限</td><?php endif; ?>
 				</tr>
 				<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>

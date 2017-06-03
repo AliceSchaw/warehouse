@@ -108,22 +108,31 @@
             </div>
           </div> 
           <div class="control-group">
-            <label for="input01" class="control-label">LentOutDate：</label>
+            <label for="input01" class="control-label">Sign：</label>
             <div class="controls">
-               <input type="text" id="input01" class="input-xlarge" name="LentOutDate" value="<!--{$row.LentOutDate}-->"> 
+               <input type="text" id="input01" class="input-xlarge" name="Sign" value="<!--{$row.Sign}-->"> 
             </div>
-          </div>                  
+          </div>
+			<div class="control-group">
+            <label for="input01" class="control-label">Belong：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="Belong" value="<!--{$row.Belong}-->"> 
+            </div>
+          </div>
           <div class="control-group">
               <label for="input01" class="control-label">状态（Status）：</label>
               <div class="controls">
                   <label class="checkbox inline">
-                      <input type="radio"   name="Status" value="In Lab !!" <!--{if $row.Status == "In Lab !!" }-->checked<!--{/if}-->/>In Lab !!
+                      <input type="radio"   name="Status" value="未借出" <!--{if $row.Status == "未借出" }-->checked<!--{/if}-->/>未借出
+                  </label>
+				  <label class="checkbox inline">
+                      <input type="radio"   name="Status" value="已借出" <!--{if $row.Status == "已借出" }-->checked<!--{/if}-->	/>已借出
                   </label>
                   <label class="checkbox inline">
                       <input type="radio"  name="Status" value="退库" <!--{if $row.Status == "退库" }-->checked<!--{/if}-->	/>退库
                   </label>
                   <label class="checkbox inline">
-                      <input type="radio"   name="Status" value="Bad !!" <!--{if $row.Status == "Bad !!" }-->checked<!--{/if}-->	/>Bad !!
+                      <input type="radio"   name="Status" value="已损坏" <!--{if $row.Status == "已损坏" }-->checked<!--{/if}-->	/>已损坏
                   </label>
               </div>
           </div>

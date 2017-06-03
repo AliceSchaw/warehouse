@@ -108,22 +108,31 @@
             </div>
           </div> 
           <div class="control-group">
-            <label for="input01" class="control-label">LentOutDate：</label>
+            <label for="input01" class="control-label">Sign：</label>
             <div class="controls">
-               <input type="text" id="input01" class="input-xlarge" name="LentOutDate" value="<?php echo $this->_var['row']['LentOutDate']; ?>"> 
+               <input type="text" id="input01" class="input-xlarge" name="Sign" value="<?php echo $this->_var['row']['Sign']; ?>"> 
             </div>
-          </div>                  
+          </div>
+			<div class="control-group">
+            <label for="input01" class="control-label">Belong：</label>
+            <div class="controls">
+               <input type="text" id="input01" class="input-xlarge" name="Belong" value="<?php echo $this->_var['row']['Belong']; ?>"> 
+            </div>
+          </div>
           <div class="control-group">
               <label for="input01" class="control-label">状态（Status）：</label>
               <div class="controls">
                   <label class="checkbox inline">
-                      <input type="radio"   name="Status" value="In Lab !!" <?php if ($this->_var['row']['Status'] == " In Lab ! ! "): ?>checked<?php endif; ?>/>In Lab !!
+                      <input type="radio"   name="Status" value="未借出" <?php if ($this->_var['row']['Status'] == "未借出"): ?>checked<?php endif; ?>/>未借出
+                  </label>
+				  <label class="checkbox inline">
+                      <input type="radio"   name="Status" value="已借出" <?php if ($this->_var['row']['Status'] == "已借出"): ?>checked<?php endif; ?>	/>已借出
                   </label>
                   <label class="checkbox inline">
                       <input type="radio"  name="Status" value="退库" <?php if ($this->_var['row']['Status'] == "退库"): ?>checked<?php endif; ?>	/>退库
                   </label>
                   <label class="checkbox inline">
-                      <input type="radio"   name="Status" value="Bad !!" <?php if ($this->_var['row']['Status'] == " Bad ! ! "): ?>checked<?php endif; ?>	/>Bad !!
+                      <input type="radio"   name="Status" value="已损坏" <?php if ($this->_var['row']['Status'] == "已损坏"): ?>checked<?php endif; ?>	/>已损坏
                   </label>
               </div>
           </div>

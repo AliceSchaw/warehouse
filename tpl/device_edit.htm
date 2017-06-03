@@ -49,28 +49,56 @@
                  <input type="text" id="input06" name="REV" class="input-xlarge" value="<!--{$row.REV}-->" >
               </div>
              </div>
+			<div class="control-group">
+              <label for="input06" class="control-label">设备不良现象：</label>
+              <div class="controls">
+                 <textarea rows="4" id="input06" name="BadEvent" class="input-xlarge" ><!--{$row.BadEvent}--></textarea>
+              </div>
+             </div>
+			 <div class="control-group">
+              <label for="input06" class="control-label">设备不良原因：</label>
+              <div class="controls">
+                 <textarea rows="4" id="input06" name="BadSource" class="input-xlarge" ><!--{$row.BadSource}--></textarea>
+              </div>
+             </div>
+			  <div class="control-group">
+              <label for="input06" class="control-label">设备记录日期：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="BadDate" class="input-xlarge" value="<!--{$row.BadDate}-->" >
+              </div>
+             </div>
+			 <div class="control-group">
+              <label for="input06" class="control-label">使用寿命：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="Badlife" class="input-xlarge" value="<!--{$row.Badlife}-->" >
+              </div>
+             </div>
+			 <div class="control-group">
+              <label for="input06" class="control-label">记录人：</label>
+              <div class="controls">
+                 <input type="text" id="input06" name="Recorder" class="input-xlarge" value="<!--{$row.Recorder}-->" >
+              </div>
+             </div>
              <div class="control-group">
                     <label for="input01" class="control-label">状态（Status）：</label>
-                    <!--{if $row.UserName==""}-->
+
                     <div class="controls">
                         <label class="checkbox inline">
-                            <input type="radio"   name="Status" value="In Lab !!" <!--{if $row.Status == 'In Lab !!' }-->checked<!--{/if}-->/>In Lab !!
+                            <input type="radio"   name="Status" value="未借出" <!--{if $row.Status == '未借出' }-->checked<!--{/if}-->/>未借出
                         </label>
                         <label class="checkbox inline">
+                            <input type="radio"   name="Status" value="已借出" <!--{if $row.Status == "已借出" }-->checked<!--{/if}-->	/>已借出
+                        </label>
+						<label class="checkbox inline">
                             <input type="radio"  name="Status" value="退库" <!--{if $row.Status == "退库" }-->checked<!--{/if}-->	/>退库
                         </label>
                         <label class="checkbox inline">
-                            <input type="radio"   name="Status" value="Bad !!" <!--{if $row.Status == "Bad !!" }-->checked<!--{/if}-->	/>Bad !!
+                            <input type="radio"   name="Status" value="已损坏" <!--{if $row.Status == "已损坏" }-->checked<!--{/if}-->	/>已损坏
                         </label>
+						
                     </div>
-                    <!--{else}-->
 
-                    <div class="controls">
-                        <input type="text" name="Status"  class="input-xlarge" value="Been Borrowed !!" readonly>
-                    </div>
-                    <!--{/if}-->
                 </div>
-
 
 
 
