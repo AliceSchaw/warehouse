@@ -1,0 +1,26 @@
+V1.1
+1.change index.html ,show borrower's device.
+2.code action.borrow.php, borrow and return.
+3.change LentoutDate while borrowing.
+4.confirm user or device exist.
+V1.2
+1.update device table.
+2.clear session[obj] in action='address'&do=''.
+3.change XorA option to REV.include show html and action php.
+4.add roleid in action.user&do=add.
+5.code action.borrow&do=borrow, device not exist or been borrowed branch.
+6.user_edit.html show present division.
+7.add page option in index.html
+V1.3
+1.change device_list tabs.
+2.clear lentoutdate after return.
+3.add Name in borrow page.
+4.build user_list in index.php
+5.use user_list in device_list; change device,user to device in action.device.php
+6.mantain p_Date function in device_add html.
+7.highlight HOME tabs while action=borrow.
+8.add situation when input deviceID first in index html.
+V1.4
+1.change device sort by P_Date.
+2.add action=borrow&do=show.
+3.add input error message.
