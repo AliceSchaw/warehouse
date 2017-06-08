@@ -46,7 +46,7 @@ if(!defined('CORE'))exit("error!");
 
     if($do=="borrow") 
     {
-        if (preg_match('/^[D][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/', $_POST['IndexID']))
+        if (preg_match('/^[D][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/i', $_POST['IndexID']))
         {
         //检测用户名是否存在
             $search .= " and UserName like '$_POST[IndexID]'";    
@@ -147,7 +147,7 @@ if(!defined('CORE'))exit("error!");
                     WHERE `ProductID` ='$BorrowdDevice' LIMIT 1 ;";
                     if ($db->query($sql)) {
                        // echo success("归还成功！","?action=borrow&do=show");
-					    echo "<script language='javascript' type='text/javascript'>";
+					   echo "<script language='javascript' type='text/javascript'>";
 					   echo "window.location.href='?action=borrow&do=show'";
 					   echo "</script>";
                     } else {
