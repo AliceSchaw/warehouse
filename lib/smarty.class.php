@@ -293,7 +293,7 @@ class smarty{
     }
     function get_val($val){
         if (strrpos($val, '[') !== false){
-            $val = preg_replace_callback("/\[([^\[\]]*)\]/is",
+            @$val = preg_replace("/\[([^\[\]]*)\]/ies",
              "'.'.str_replace('$','\$','\\1')",
             $val);
         }

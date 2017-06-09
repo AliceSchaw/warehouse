@@ -36,11 +36,11 @@ $keywords=empty($_GET['keywords'])?'':trim($_GET['keywords']);  //get keywords�
 
 
 //读取用户数组
-$sql_user="SELECT Name,UserName FROM `user`";
+$sql_user="SELECT ChineseName,UserName FROM `user`";
 $db->query($sql_user);
 $user_arr=$db->fetchAll();
 foreach($user_arr as $key=>$val){
-	$user_list[$user_arr[$key][UserName]]=$user_arr[$key][Name];	 //用户数组
+	$user_list[$user_arr[$key][UserName]]=$user_arr[$key][ChineseName];	 //用户数组
 }
 
 //执行页面

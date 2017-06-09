@@ -54,7 +54,7 @@
 						<th class="hidden-phone">ProductID</th>
 						<th class="hidden-phone" width="100">Product Description</th>
 						<th class="hidden-phone">Status</th>
-						<th class="hidden-phone" width="80">借用人</th>
+						<th class="hidden-phone" width="95">借用人</th>
 						<th class="hidden-phone" width="80">借出时间</th>
 						<th class="hidden-phone">P_Date</th>
 						<?php if ($_SESSION['roleid'] == "1"): ?>
@@ -74,7 +74,7 @@
 					<td class="hidden-phone"><?php echo $this->_var['list']['Category']; ?></td>
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['Vendor']) ? '' : $this->_var['list']['Vendor']; ?></td>
 					<td class="hidden-phone"><?php echo empty($this->_var['list']['ProductID']) ? '' : $this->_var['list']['ProductID']; ?></td>
-					<td class="hidden-phone">
+					<td class="hi5den-phone">
 						<?php if ($this->_var['list']['REV'] != ""): ?>
 						<?php echo empty($this->_var['list']['REV']) ? '' : $this->_var['list']['REV']; ?>&nbsp;
 						<?php endif; ?>
