@@ -79,8 +79,8 @@ if($do==""){
     $db->query($sql);
 	$row=$db->fetchAll();
 
-    $sql1="SELECT distinct Type FROM device";
-    $sql2="SELECT distinct Category FROM device";
+    $sql1="SELECT distinct Type FROM device where 1=1 $search";
+    $sql2="SELECT distinct Category FROM device where 1=1 $search";
 
     $db->query($sql1);
     $Objrow=$db->fetchAll();
@@ -253,8 +253,8 @@ if($do=="select"){
     $db->query($sql);
     $row=$db->fetchAll();
 
-    $sql1="SELECT distinct Type FROM device";
-    $sql2="SELECT distinct Category FROM device";
+    $sql1="SELECT distinct Type FROM device where 1=1 $search";
+    $sql2="SELECT distinct Category FROM device where 1=1 $search";
 
     $db->query($sql1);
     $Objrow=$db->fetchAll();
