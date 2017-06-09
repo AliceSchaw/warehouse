@@ -14,7 +14,7 @@
 
 		<?php endif; ?>
 
-		<input type="text" name="keywords" id="keywords" class="input-medium" value="<?php echo $_REQUEST['keywords']; ?>"  placeholder="关键字">
+		<input type="text" name="keywords" id="keywords" class="input-medium" value="<?php echo $_REQUEST['keywords']; ?>"  placeholder="关键字" onkeypress="if(event.keyCode==13) {ToSearch.click();return false;}" autocomplete="off">
 
 		<a href="?action=address&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn" id="ToSearch"><i class="icon-search"></i> 查询</a>
 		<a href="?action=address" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>

@@ -13,9 +13,9 @@
 		     
 		    <?php endif; ?>		
 			
-			<input type="text" name="keywords" id="keywords" class="input-medium" value="<?php echo $_REQUEST['keywords']; ?>"  placeholder="关键字">
+			<input type="text" name="keywords" id="keywords" class="input-medium" value="<?php echo $_REQUEST['keywords']; ?>"  placeholder="关键字" onkeypress="if(event.keyCode==13) {Search.click();return false;}" autocomplete="off">
 			<?php echo $this->_var['select_userlist']; ?>
-				<a href="?action=user&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn"><i class="icon-search"></i> 查询</a>
+				<a href="?action=user&keywords="onclick="this.href=this.href+document.getElementById('keywords').value" class="btn" id="Search"><i class="icon-search"></i> 查询</a>
 			<a href="?action=user" class="btn hidden-phone"><i class="icon-th-list"></i> 全部</a>
 			</form> 
           <div class="row-fluid" id="usrinfo">
