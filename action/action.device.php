@@ -283,8 +283,7 @@ if($do=="select"){
 if($do=="returnlate"){
 		
 		$updated_at=date("Y-m-d");
-		$returndate=date("Y-m-d",strtotime("-1month"));
-    	$search .= " and ReturnBefore between '$returndate' and '$updated_at'";
+    	$search .= " and ReturnBefore <= '$updated_at' and ReturnBefore >0";
 
 
 

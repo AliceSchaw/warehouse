@@ -9,9 +9,9 @@
 
 	<form class="form-search" action="" method="post" >
 		<?php if ($_SESSION['roleid'] == "1"): ?>
-		<a href="?action=address&do=new" class="btn btn-primary pull-right"><i class="icon-pencil icon-white"></i> 新建</a>
+		<a href="?action=address&do=new" class="btn btn-primary pull-right"><i class="icon-pencil icon-th-list icon-white"></i> 新建</a>
 
-		<a href="?action=address&do=returnlate" class="btn btn-primary pull-right"><i class="icon-pencil icon-white"></i> 超期 </a>
+		<a href="?action=address&do=returnlate" class="btn btn-primary pull-right"><i class="icon-th-list icon-white"></i> 超期 </a>
 		<?php else: ?>
 
 		<?php endif; ?>
