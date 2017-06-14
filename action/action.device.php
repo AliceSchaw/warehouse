@@ -279,4 +279,47 @@ if($do=="select"){
     exit;
 	
 }
+//筛选超期
+if($do=="returnlate"){
+		
+		$updated_at=date("Y-m-d");
+		$returndate=date("Y-m-d",strtotime("-1month"));
+    	$search .= " and ReturnBefore between '$returndate' and '$updated_at'";
+
+
+
+	//设置分页
+	if($_POST[numPerPage]==""){$numPerPage="20";}else{$numPerPage=$_POST[numPerPage];}
+	if($_GET[pageNum]==""||$_GET[pageNum]=="0" ){$pageNum="0";}else{$pageNum=($_GET[pageNum]-1)*$numPerPage;}
+	//$num=mysql_query("SELECT * FROM device where 1=1 and roleid=2 $search");//当前频道条数
+    $num=mysql_query("SELECT * FROM device where 1=1 $search");//当前频道条数
+	$total=mysql_num_rows($num);//总条数
+	$page=new page(array('total'=>$total,'perpage'=>$numPerPage));
+
+	//查询
+	//$sql="SELECT * FROM device where 1=1 and roleid=2 $search order by id desc LIMIT $pageNum,$numPerPage";
+    $sql="SELECT * FROM device where 1=1 $search order by ReturnBefore LIMIT $pageNum,$numPerPage";
+    //echo "<br/>"."<br/>".$sql;
+
+    $db->query($sql);
+	$row=$db->fetchAll();
+
+
+
+	//模版
+	$smt = new smarty();smarty_cfg($smt);
+	$smt->assign('row',$row);
+
+	$smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
+
+	$smt->assign('pageNum',$_GET[pageNum]); //当前页数
+	$smt->assign('total',$total);  //总条数
+
+
+	$smt->assign ('page',$page->show());
+	$smt->assign('title',"设备管理");
+	$smt->display('device_list.htm');
+
+	exit;	
+}
 ?>

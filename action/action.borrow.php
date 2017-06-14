@@ -23,6 +23,7 @@ if(!defined('CORE'))exit("error!");
         $db->query($sql);
         $row=$db->fetchAll();
 
+        
 
 
         //echo $row;
@@ -117,10 +118,12 @@ if(!defined('CORE'))exit("error!");
                 if ($BorrowUser==""&&$_SESSION['inputid']!="")
                 {
                     $updated_at=date("Y-m-d H:i:s");
+                    $returndate=date("Y-m-d H:i:s",strtotime("+1week"));
                     $sql = "UPDATE device SET
                     `UserName` = '{$_SESSION['inputid']}',
                     `Status` = '已借出',
-                    `LentoutDate` = '$updated_at' 
+                    `LentoutDate` = '$updated_at',
+                    `ReturnBefore`='$returndate' 
                     WHERE `ProductID` ='$BorrowdDevice' LIMIT 1";
                     //echo $sql;
 
@@ -139,11 +142,12 @@ if(!defined('CORE'))exit("error!");
                 }
                 else if($BorrowUser!=""&&($BorrowUser==$_SESSION['inputid'])) 
                 {
-                    $updated_at=date("Y-m-d H:i:s");
+                    //$updated_at=date("Y-m-d H:i:s");
 					$sql = "UPDATE device SET
                     `UserName` = '',
                     `Status` = '未借出',
-                    `LentoutDate` = '$updated_at' 
+                    `LentoutDate` = ' ',
+                    `ReturnBefore`=' ' 
                     WHERE `ProductID` ='$BorrowdDevice' LIMIT 1 ;";
                     if ($db->query($sql)) {
                        // echo success("归还成功！","?action=borrow&do=show");

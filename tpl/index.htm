@@ -100,6 +100,7 @@
                         <th class="hidden-phone">UserName</th>
                         <th class="hidden-phone">Name</th>
                         <th class="hidden-phone">借出日期</th>
+                        <th class="hidden-phone">应还日期</th>
 
                     </tr>
 
@@ -114,6 +115,7 @@
                         <td class="hidden-phone"><!--{$list.UserName|default:无}--></td>
                         <td class="hidden-phone"><!--{$user_list[$list.UserName]|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.LentOutDate|default:无}--></td>
+                        <td class="hidden-phone"><!--{$list.ReturnBefore|default:无}--></td>
                         <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
                         <i class="icon-edit"></i>归还</a>
                         </td>-->
