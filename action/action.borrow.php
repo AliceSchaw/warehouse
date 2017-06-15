@@ -142,13 +142,20 @@ if(!defined('CORE'))exit("error!");
                 }
                 else if($BorrowUser!=""&&($BorrowUser==$_SESSION['inputid'])) 
                 {
-                    //$updated_at=date("Y-m-d H:i:s");
+                    $updated_at=date("Y-m-d H:i:s");
 					$sql = "UPDATE device SET
                     `UserName` = '',
                     `Status` = '未借出',
                     `LentoutDate` = ' ',
                     `ReturnBefore`=' ' 
-                    WHERE `ProductID` ='$BorrowdDevice' LIMIT 1 ;";
+                    WHERE `ProductID` ='$BorrowdDevice' LIMIT 1 ";
+                    echo $sql;
+                    //归还历史纪录
+                    $sql1="INSERT INTO `history`(`ProductID`,`UserName`,`ReturnDate`)VALUES('$BorrowdDevice','$BorrowUser','$updated_at')";
+                    echo $sql1;
+                    $db->query($sql1);
+                    
+                    //exit;
                     if ($db->query($sql)) {
                        // echo success("归还成功！","?action=borrow&do=show");
 					   echo "<script language='javascript' type='text/javascript'>";
