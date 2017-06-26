@@ -6,12 +6,17 @@
 		  <div class="page-header">
             <h3><?php echo $this->_var['title']; ?></h3>
           </div>
-
+	<form action="?action=import" method="post" class="form-search">
+    	<input type="file" name="fileUpload"/>
+    	<input type="submit" value="表格导入" class="btn"/>
+    	<a href="?action=export" class="btn"> 数据导出</a>
+    	<a href="?action=address&do=returnlate" class="btn btn-primary pull-right"><i class="icon-th-list icon-white"></i> 超期 </a>
+    </form>
 	<form class="form-search" action="" method="post" >
 		<?php if ($_SESSION['roleid'] == "1"): ?>
 		<a href="?action=address&do=new" class="btn btn-primary pull-right"><i class="icon-pencil icon-th-list icon-white"></i> 新建</a>
 
-		<a href="?action=address&do=returnlate" class="btn btn-primary pull-right"><i class="icon-th-list icon-white"></i> 超期 </a>
+
 		<?php else: ?>
 
 		<?php endif; ?>
