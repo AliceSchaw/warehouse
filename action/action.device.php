@@ -20,7 +20,7 @@ if($do=="export"){
     $result = mysql_query($sql);
 	$str = "Type,Category,Vendor,ProductName,ProductID\n";
     $str .= iconv('utf-8','gb2312',$str);
-	//echo $row;
+	echo $row;
     while($row=$list){
         $Type=iconv('utf-8','gb2312',$row['Type']);
         $Category=iconv('utf-8','gb2312',$row['Category']);
@@ -33,7 +33,7 @@ if($do=="export"){
         $str .=$Type.",".$Category.",".$Vendor.",".$ProductName.",".$ProductID."\n";
         
     }
-    $filename = "QT 库房系统-".date('Ymd').'.csv';
+    $filename = "device-".date('Ymd').'.csv';
     export_csv($filename,$str);
 }
 

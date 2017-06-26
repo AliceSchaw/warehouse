@@ -1,34 +1,47 @@
 <?php
+include './lib/phpexcel/PHPExcel.php';
 
-include_once ("connect.php");
+$excel = new PHPExcel();
+//Excel表格式,这里简略写了8列
+$letter = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA');
+//表头数组
+$tableheader = array('Type','Category','Interface','Verden','Product','REV','FW','工具室料号','PropertyNum','DPN','ModelNum','Source','ProductName','Status','P_Date','UserName','LenOutDate','sign','Belong','BadEvent','BadSource','BadDate','Recorder','Badlife','退库时间','退库原因','ReturnBefore');
+$sql="SELECT * FROM device";
+$db->query($sql);
+$data=$db->fetchAll();
 
-$action = $_GET['action'];
-if ($action=='export') { //����CSV
-    $result = mysql_query("select * from test1");
-	$str = "Type,Category,Vendor,ProductName\n";
-    $str .= iconv('utf-8','gb2312',$str);
-	echo $row;
-    while($row=mysql_fetch_array($result)){
-        $Type=iconv('utf-8','gb2312',$row['Type']);
-        $Category=iconv('utf-8','gb2312',$row['Category']);
-        $Vendor=iconv('utf-8','gb2312',$row['Vendor']);
-        $ProductName=iconv('utf-8','gb2312',$row['ProductName']);
-        $ProductID=iconv('utf-8','gb2312',$row['ProductID']);
-        $Status=iconv('utf-8','gb2312',$row['Status']);
-        $UserName=iconv('utf-8','gb2312',$row['UserName']);
-        $XorA=iconv('utf-8','gb2312',$row['XorA']);
-        $str .=$Type.",".$Category.",".$Vendor.",".$ProductName.",".$ProductID."\n";
-    }
-    $filename = "QT �ⷿϵͳ-".date('Ymd').'.csv';
-    export_csv($filename,$str);
+
+//填充表头信息
+for($i = 0;$i < count($tableheader);$i++) {
+$excel->getActiveSheet()->setCellValue("$letter[$i]1","$tableheader[$i]");
 }
-
-function export_csv($filename,$data) {
-    header("Content-type:text/csv");
-    header("Content-Disposition:attachment;filename=".$filename);
-    header('Cache-Control:must-revalidate,post-check=0,pre-check=0');
-    header('Expires:0');
-    header('Pragma:public');
-    echo $data;
+//表格数组
+ // $data = array( 
+ // array('1','小王','男','20','100'),
+ // array('2','小李','男','20','101'),
+ // array('3','小张','女','20','102'),
+ // array('4','小赵','女','20','103')
+ // );
+//填充表格信息
+for ($i = 2;$i <= count($data) + 1;$i++) {
+$j = 0;
+foreach ($data[$i - 2] as $key=>$value) {
+$excel->getActiveSheet()->setCellValue("$letter[$j]$i","$value");
+$j++;
+} 
 }
+$write = new PHPExcel_Writer_Excel5($excel);
+ob_end_clean();
+header("Pragma: public");
+header("Expires: 0");
+header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+header("Content-Type:application/force-download");
+header("Content-Type:application/vnd.ms-execl");
+header("Content-Type:application/octet-stream");
+header("Content-Type:application/download");;
+header('Content-Disposition:attachment;filename="device(' . date('Ymd') . ').xls"');
+header("Content-Transfer-Encoding:binary"); 
+header("Content-type: text/html; charset=utf-8");
+$write->save('php://output');
+
 ?>

@@ -27,6 +27,7 @@ require_once("lib/page.class.php");         //分页类
 require_once("lib/cfg.class.php");          //分页类
 
 
+
 //操作值
 $action=empty($_GET['action'])?'':trim($_GET['action']); 	 //get action值
 $do=empty($_GET['do'])?'':trim($_GET['do']);			 	 //get do值

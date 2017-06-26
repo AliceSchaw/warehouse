@@ -26,7 +26,7 @@ if(!defined('CORE'))exit("error!");
         
 
 
-        //echo $row;
+        
         //模版
         $smt = new smarty();smarty_cfg($smt);
         $smt->assign('row',$row);
@@ -149,13 +149,13 @@ if(!defined('CORE'))exit("error!");
                     `LentoutDate` = ' ',
                     `ReturnBefore`=' ' 
                     WHERE `ProductID` ='$BorrowdDevice' LIMIT 1 ";
-                    echo $sql;
+                    //echo $sql;
                     //归还历史纪录
                     $sql1="INSERT INTO `history`(`ProductID`,`UserName`,`ReturnDate`)VALUES('$BorrowdDevice','$BorrowUser','$updated_at')";
-                    echo $sql1;
+                    //echo $sql1;
                     $db->query($sql1);
                     
-                    //exit;
+                    
                     if ($db->query($sql)) {
                        // echo success("归还成功！","?action=borrow&do=show");
 					   echo "<script language='javascript' type='text/javascript'>";
