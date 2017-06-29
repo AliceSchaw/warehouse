@@ -15,13 +15,7 @@ $data=$db->fetchAll();
 for($i = 0;$i < count($tableheader);$i++) {
 $excel->getActiveSheet()->setCellValue("$letter[$i]1","$tableheader[$i]");
 }
-//表格数组
- // $data = array( 
- // array('1','小王','男','20','100'),
- // array('2','小李','男','20','101'),
- // array('3','小张','女','20','102'),
- // array('4','小赵','女','20','103')
- // );
+
 //填充表格信息
 for ($i = 2;$i <= count($data) + 1;$i++) {
 $j = 0;

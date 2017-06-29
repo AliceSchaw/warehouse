@@ -1,8 +1,12 @@
 <?php
 require_once './lib/phpreader/reader.php';// ExcelFile($filename, $encoding); $data = new Spreadsheet_Excel_Reader(); // Set output Encoding. $data->setOutputEncoding('gbk');   
+if($_POST[fileUpload]==''){
+    echo success("请先选择导入的xls表格路径！","?action=address");
+}
 $data=new Spreadsheet_Excel_Reader();
 $data->setOutputEncoding('UTF-8');
 $data->read($_POST[fileUpload]);
+
 $db=mysqli_connect('127.0.0.1','root','','qtwarehouse') or
 die("Could not connect to database.");//?????  
 mysqli_query($db,"set names 'utf8'");//????  
@@ -47,15 +51,7 @@ for($i=1;$i<=$data->sheets[0]['numRows'];$i++){
     if($i==$data->sheets[0]['numRows']){
         echo success("设备数据导入成功，自动跳转","?action=address");
     };
-/*
-    $sql="INSERT INTO db_test (`Type`,`Category`,`Vendor`,`ProductName`) 
-VALUES ('".
 
-        $data->sheets[0]['cells'][$i][1]."','".
-        $data->sheets[0]['cells'][$i][2]."','".
-        $data->sheets[0]['cells'][$i][3]."','".
-        $data->sheets[0]['cells'][$i][4]."')";
-*/
 }
 
 

@@ -291,7 +291,7 @@ if($do=="history"){
 	is_admin($action,$do); 
 
 	//查询
-	$sql=" SELECT * FROM history where ProductID='{$ProductID}' order by LentoutDate";
+	$sql=" SELECT * FROM history where ProductID='{$ProductID}' order by ReturnDate desc";
 
 	$db->query($sql);
 	$row=$db->fetchRow();
