@@ -77,7 +77,13 @@ if(!defined('CORE'))exit("error!");
                 $db->query($sql);
                 $row=$db->fetchAll();
 
+                // foreach($row as $key=>$value){
 
+                //     $history=$value[ProductID];
+                //     $sql1="SELECT * FROM history where ProductID='$history'";
+                //     $db->query($sql1);
+                //     $row1=$db->fetchAll();
+                // };
 
                 //echo $row;
                 //模版
@@ -118,7 +124,7 @@ if(!defined('CORE'))exit("error!");
                 if ($BorrowUser==""&&$_SESSION['inputid']!="")
                 {
                     $updated_at=date("Y-m-d H:i:s");
-                    $returndate=date("Y-m-d H:i:s",strtotime("+1week"));
+                    $returndate=date("Y-m-d H:i:s",strtotime("+5days"));
                     $sql = "UPDATE device SET
                     `UserName` = '{$_SESSION['inputid']}',
                     `Status` = '已借出',
@@ -188,13 +194,16 @@ if(!defined('CORE'))exit("error!");
                     $db->query($sql);
                     $row=$db->fetchAll();
 
+                    $sql1="SELECT * FROM history where ProductID='$BorrowdDevice' order by ReturnDate desc LIMIT 0,1";
+                    $db->query($sql1);
+                    $row1=$db->fetchAll();
                     //var_dump($row);
 
                     //echo $row;
                     //模版
                     $smt = new smarty();smarty_cfg($smt);
                     $smt->assign('row',$row);
-
+                    $smt->assign('row1',$row1);
                     $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
 
                     $smt->assign('pageNum',$_GET[pageNum]); //当前页数

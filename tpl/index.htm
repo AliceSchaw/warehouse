@@ -101,7 +101,9 @@
                         <th class="hidden-phone">Name</th>
                         <th class="hidden-phone">借出日期</th>
                         <th class="hidden-phone">应还日期</th>
-
+                        <!--{if $row1!=""}-->
+                        <th class="hidden-phone">借用历史</th>
+                        <!--{/if}-->
                     </tr>
 
                     </thead>
@@ -116,14 +118,19 @@
                         <td class="hidden-phone"><!--{$user_list[$list.UserName]|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.LentOutDate|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.ReturnBefore|default:无}--></td>
+
                         <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
                         <i class="icon-edit"></i>归还</a>
                         </td>-->
                 
 
 
-                    </tr>
-                    <!--{/foreach}-->              
+                    
+                    <!--{/foreach}-->
+                    <!--{foreach from=$row1 item=list}-->
+                    <td class="hidden-phone"><!--{$user_list[$list.UserName]|default:无}--></td>
+                    <!--{/foreach}-->
+                    </tr>            
                     </tbody>
 
                 </table>

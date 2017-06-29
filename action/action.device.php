@@ -8,49 +8,13 @@ header("Content-type: text/html; charset=utf-8");
 if(!defined('CORE'))exit("error!"); 
 
 
-//导出
-if($do=="export"){	
-	//查询
-	$sql="select * from device";
-	
-	//echo $sql;
-	$db->query($sql);
-	$list=$db->fetchAll();
-	
-    $result = mysql_query($sql);
-	$str = "Type,Category,Vendor,ProductName,ProductID\n";
-    $str .= iconv('utf-8','gb2312',$str);
-	echo $row;
-    while($row=$list){
-        $Type=iconv('utf-8','gb2312',$row['Type']);
-        $Category=iconv('utf-8','gb2312',$row['Category']);
-        $Vendor=iconv('utf-8','gb2312',$row['Vendor']);
-        $ProductName=iconv('utf-8','gb2312',$row['ProductName']);
-        $ProductID=iconv('utf-8','gb2312',$row['ProductID']);
-        $Status=iconv('utf-8','gb2312',$row['Status']);
-        $UserName=iconv('utf-8','gb2312',$row['UserName']);
-        $REV=iconv('utf-8','gb2312',$row['REV']);
-        $str .=$Type.",".$Category.",".$Vendor.",".$ProductName.",".$ProductID."\n";
-        
-    }
-    $filename = "device-".date('Ymd').'.csv';
-    export_csv($filename,$str);
-}
 
-
-function export_csv($filename,$data) {
-    header("Content-type:text/csv");
-    header("Content-Disposition:attachment;filename=".$filename);
-    header('Cache-Control:must-revalidate,post-check=0,pre-check=0');
-    header('Expires:0');
-    header('Pragma:public');
-    echo $data;
-}
 
 
 
 //列表
 if($do==""){
+
 	//var_dump($user_list);
 	//判断检索值
     if($keywords!="")
@@ -320,5 +284,23 @@ if($do=="returnlate"){
 	$smt->display('device_list.htm');
 
 	exit;	
+}
+
+if($do=="history"){
+	If_rabc($action,$do); //检测权限
+	is_admin($action,$do); 
+
+	//查询
+	$sql=" SELECT * FROM history where ProductID='{$ProductID}' order by LentoutDate";
+
+	$db->query($sql);
+	$row=$db->fetchRow();
+	
+	//模版
+	$smt = new smarty();smarty_cfg($smt);
+	$smt->assign('row',$row);
+	$smt->assign('title',"历史纪录");
+	$smt->display('history.htm');
+	exit;
 }
 ?>
