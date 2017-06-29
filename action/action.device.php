@@ -44,7 +44,7 @@ if($do==""){
 	$row=$db->fetchAll();
 
     $sql1="SELECT distinct Type FROM device where 1=1 $search";
-    $sql2="SELECT distinct Category FROM device where 1=1 $search";
+    $sql2="SELECT distinct Category FROM device where 1=1 $search order by Category";
 
     $db->query($sql1);
     $Objrow=$db->fetchAll();

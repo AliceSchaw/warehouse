@@ -118,19 +118,12 @@
                         <td class="hidden-phone"><!--{$user_list[$list.UserName]|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.LentOutDate|default:无}--></td>
                         <td class="hidden-phone"><!--{$list.ReturnBefore|default:无}--></td>
-
-                        <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
-                        <i class="icon-edit"></i>归还</a>
-                        </td>-->
-                
-
-
+                    <!--{/foreach}-->   
+                        <!--{if $row1!=""}-->
+                        <td class="hidden-phone"><!--{$user_list[$lastusername]|default:无}--></td>
+                        <!--{/if}-->
+                    </tr>         
                     
-                    <!--{/foreach}-->
-                    <!--{foreach from=$row1 item=list}-->
-                    <td class="hidden-phone"><!--{$user_list[$list.UserName]|default:无}--></td>
-                    <!--{/foreach}-->
-                    </tr>            
                     </tbody>
 
                 </table>

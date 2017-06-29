@@ -111,32 +111,23 @@
                     </thead>
                     <tbody>
                    
-                    <?php $_from = $this->_var['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'list_0_79366100_1498718732');if (count($_from)):
-    foreach ($_from AS $this->_var['list_0_79366100_1498718732']):
+                    <?php $_from = $this->_var['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'list_0_77186300_1498724749');if (count($_from)):
+    foreach ($_from AS $this->_var['list_0_77186300_1498724749']):
 ?>
                     <tr>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_79366100_1498718732']['ProductName']) ? '无' : $this->_var['list_0_79366100_1498718732']['ProductName']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_79366100_1498718732']['ProductID']) ? '无' : $this->_var['list_0_79366100_1498718732']['ProductID']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_79366100_1498718732']['Status']) ? '无' : $this->_var['list_0_79366100_1498718732']['Status']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_79366100_1498718732']['UserName']) ? '无' : $this->_var['list_0_79366100_1498718732']['UserName']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['user_list'][$this->_var['list_0_79366100_1498718732']['UserName']]) ? '无' : $this->_var['user_list'][$this->_var['list_0_79366100_1498718732']['UserName']]; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_79366100_1498718732']['LentOutDate']) ? '无' : $this->_var['list_0_79366100_1498718732']['LentOutDate']; ?></td>
-                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_79366100_1498718732']['ReturnBefore']) ? '无' : $this->_var['list_0_79366100_1498718732']['ReturnBefore']; ?></td>
-
-                        <!--<td><a class="btn btn-medium" href="?action=borrow&do=return">
-                        <i class="icon-edit"></i>归还</a>
-                        </td>-->
-                
-
-
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_77186300_1498724749']['ProductName']) ? '无' : $this->_var['list_0_77186300_1498724749']['ProductName']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_77186300_1498724749']['ProductID']) ? '无' : $this->_var['list_0_77186300_1498724749']['ProductID']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_77186300_1498724749']['Status']) ? '无' : $this->_var['list_0_77186300_1498724749']['Status']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_77186300_1498724749']['UserName']) ? '无' : $this->_var['list_0_77186300_1498724749']['UserName']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['user_list'][$this->_var['list_0_77186300_1498724749']['UserName']]) ? '无' : $this->_var['user_list'][$this->_var['list_0_77186300_1498724749']['UserName']]; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_77186300_1498724749']['LentOutDate']) ? '无' : $this->_var['list_0_77186300_1498724749']['LentOutDate']; ?></td>
+                        <td class="hidden-phone"><?php echo empty($this->_var['list_0_77186300_1498724749']['ReturnBefore']) ? '无' : $this->_var['list_0_77186300_1498724749']['ReturnBefore']; ?></td>
+                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>   
+                        <?php if ($this->_var['row1'] != ""): ?>
+                        <td class="hidden-phone"><?php echo empty($this->_var['user_list'][$this->_var['lastusername']]) ? '无' : $this->_var['user_list'][$this->_var['lastusername']]; ?></td>
+                        <?php endif; ?>
+                    </tr>         
                     
-                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-                    <?php $_from = $this->_var['row1']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'list_0_79833600_1498718732');if (count($_from)):
-    foreach ($_from AS $this->_var['list_0_79833600_1498718732']):
-?>
-                    <td class="hidden-phone"><?php echo empty($this->_var['user_list'][$this->_var['list_0_79833600_1498718732']['UserName']]) ? '无' : $this->_var['user_list'][$this->_var['list_0_79833600_1498718732']['UserName']]; ?></td>
-                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-                    </tr>            
                     </tbody>
 
                 </table>

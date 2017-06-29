@@ -156,6 +156,7 @@ if(!defined('CORE'))exit("error!");
                     `ReturnBefore`=' ' 
                     WHERE `ProductID` ='$BorrowdDevice' LIMIT 1 ";
                     //echo $sql;
+                    
                     //归还历史纪录
                     $sql1="INSERT INTO `history`(`ProductID`,`UserName`,`ReturnDate`)VALUES('$BorrowdDevice','$BorrowUser','$updated_at')";
                     //echo $sql1;
@@ -179,38 +180,30 @@ if(!defined('CORE'))exit("error!");
                     //查询设备信息
                      $search .= " and ProductID like '$BorrowdDevice'";
 
-                   //设置分页
-                    if($_POST[numPerPage]==""){$numPerPage="20";}
-                    else{$numPerPage=$_POST[numPerPage];}
-                    if($_GET[pageNum]==""||$_GET[pageNum]=="0" ){$pageNum="0";}
-                    else{$pageNum=($_GET[pageNum]-1)*$numPerPage;}
-                    $num=mysql_query("SELECT * FROM device where $search");//当前频道条数
-                    $total=mysql_num_rows($num);//总条数
-                    $page=new page(array('total'=>$total,'perpage'=>$numPerPage));
-
                     //查询
-                    $sql="SELECT * FROM device where 1=1 $search order by LentoutDate desc LIMIT $pageNum,$numPerPage";
+                    $sql="SELECT * FROM device where 1=1 $search";
 
                     $db->query($sql);
                     $row=$db->fetchAll();
 
-                    $sql1="SELECT * FROM history where ProductID='$BorrowdDevice' order by ReturnDate desc LIMIT 0,1";
+                    $sql1="SELECT UserName FROM history where ProductID='$BorrowdDevice' order by ReturnDate desc LIMIT 0,1";
+
                     $db->query($sql1);
                     $row1=$db->fetchAll();
-                    //var_dump($row);
+                    $lastusername=$row1[0][UserName];
+                    //var_dump($row1);
 
                     //echo $row;
                     //模版
                     $smt = new smarty();smarty_cfg($smt);
-                    $smt->assign('row',$row);
+
+
                     $smt->assign('row1',$row1);
-                    $smt->assign('numPerPage',$_POST[numPerPage]); //显示条数
+                    $smt->assign('lastusername',$lastusername);
 
-                    $smt->assign('pageNum',$_GET[pageNum]); //当前页数
-                    $smt->assign('total',$total);  //总条数
+                    $smt->assign('row',$row);
 
-
-                    $smt->assign ('page',$page->show());
+                    $smt->assign('total',1);  //总条数
                     $smt->assign('title',"设备借还");
                     $smt->display('index.htm');
 
